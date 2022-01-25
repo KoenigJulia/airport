@@ -1,7 +1,5 @@
 package at.htl.workloads.person;
 
-import at.htl.workloads.person.Person;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import java.util.List;

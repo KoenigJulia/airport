@@ -1,7 +1,5 @@
 package at.htl.workloads.flight;
 
-import at.htl.workloads.flight.Flight;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import java.util.List;

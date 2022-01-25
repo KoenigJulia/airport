@@ -1,7 +1,5 @@
 package at.htl.workloads.luggage;
 
-import at.htl.workloads.luggage.Luggage;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import java.util.List;
