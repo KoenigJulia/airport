@@ -1,4 +1,6 @@
 package at.htl.workloads.flightattendant;
 
-public class FlightAttendant {
+import at.htl.workloads.employee.Employee;
+
+public class FlightAttendant extends Employee {
 }
