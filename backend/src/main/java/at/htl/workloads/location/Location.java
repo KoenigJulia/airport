@@ -10,35 +10,75 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String locationName;
+    private String countryName;
+    private String cityName;
     private String airportName;
+    private String address;
+    private String IATA;
 
     //region gettersetter
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    public String getLocationName() {
-        return locationName;
+
+    public String getCountryName() {
+        return countryName;
     }
-    public void setLocationName(String locationName) {
-        this.locationName = locationName;
+
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
     public String getAirportName() {
         return airportName;
     }
+
     public void setAirportName(String airportName) {
         this.airportName = airportName;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getIATA() {
+        return IATA;
+    }
+
+    public void setIATA(String IATA) {
+        this.IATA = IATA;
+    }
+
     //endregion
     //region constructor
-    public Location(String locationName, String airportName) {
-        this.locationName = locationName;
-        this.airportName = airportName;
-    }
+
     public Location() {
     }
+
+    public Location(String countryName, String cityName, String airportName, String address, String IATA) {
+        this.countryName = countryName;
+        this.cityName = cityName;
+        this.airportName = airportName;
+        this.address = address;
+        this.IATA = IATA;
+    }
+
     //endregion
 }
