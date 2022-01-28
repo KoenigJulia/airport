@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class Pilot extends Employee {
 
 
-    public Pilot(String firstName, String lastName, String email, Integer phoneNumber, LocalDate birthdate, Integer socialSecurityNumber, String employeeNumber, BigDecimal salary) {
+    public Pilot(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, String employeeNumber, BigDecimal salary) {
         super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, employeeNumber, salary);
     }
 
