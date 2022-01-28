@@ -15,20 +15,22 @@ public class Person {
     private String phoneNumber;
     private LocalDate birthdate;
     private String socialSecurityNumber;
+    private Double flightMiles;
 
     public Person() {
     }
 
-    public Person(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber) {
+    public Person(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, Double flightMiles) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.birthdate = birthdate;
         this.socialSecurityNumber = socialSecurityNumber;
+        this.flightMiles = flightMiles;
     }
 
-    //region gettersetter
+//region gettersetter
 
     public Long getId() {
         return id;
@@ -86,6 +88,13 @@ public class Person {
         this.socialSecurityNumber = socialSecurityNumber;
     }
 
+    public Double getFlightMiles() {
+        return flightMiles;
+    }
+
+    public void setFlightMiles(Double flightMiles) {
+        this.flightMiles = flightMiles;
+    }
     //endregion
 
 

@@ -1,7 +1,7 @@
 package at.htl.workloads.flight;
 
 import at.htl.workloads.airplane.Airplane;
-import at.htl.workloads.flightattendant.FlightAttendant;
+import at.htl.workloads.employee.Employee;
 import at.htl.workloads.location.Location;
 import at.htl.workloads.person.Person;
 import at.htl.workloads.pilot.Pilot;
@@ -25,7 +25,7 @@ public class Flight {
     private Airplane airplane;
     private LocalDateTime startTime;
     @OneToMany
-    private List<FlightAttendant> flightAttendants;
+    private List<Employee> flightAttendants;
     @OneToMany
     private List<Pilot> pilots;
     @OneToMany
@@ -67,10 +67,10 @@ public class Flight {
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
-    public List<FlightAttendant> getFlightAttendants() {
+    public List<Employee> getFlightAttendants() {
         return flightAttendants;
     }
-    public void setFlightAttendants(List<FlightAttendant> flightAttendants) {
+    public void setFlightAttendants(List<Employee> flightAttendants) {
         this.flightAttendants = flightAttendants;
     }
     public List<Pilot> getPilots() {

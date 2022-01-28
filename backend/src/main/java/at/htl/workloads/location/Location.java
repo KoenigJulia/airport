@@ -14,7 +14,7 @@ public class Location {
     private String cityName;
     private String airportName;
     private String address;
-    private String IATA;
+    private String IATA; //AirportNummer
 
     //region gettersetter
 

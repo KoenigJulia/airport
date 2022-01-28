@@ -15,12 +15,12 @@ import javax.enterprise.event.Observes;
 public class InitBean {
     void init(@Observes StartupEvent event){
         // customers
-        Person p1 = new Person("John", "Doe", "john.doe@gmail.com", "123456789", LocalDate.parse("19.12.1990"), "123456789");
-        Person p2 = new Person("Jim", "Paul", "jim.pau@gmail.com", "987654321", LocalDate.parse("19.08.1990"), "987654321");
-        Person p3 = new Person("Jane", "Doe", "jane.doe@gmail.com", "123456789", LocalDate.parse("19.09.1990"), "123456789");
-        Person p4 = new Person("Jack", "Doe", "jack.doe@gmail.com", "123456789", LocalDate.parse("19.10.1990"), "123456789");
-        Person p5 = new Person("Jill", "Doe", "jill.doe@gmail.com", "123456789", LocalDate.parse("19.11.1990"), "123456789");
-        Person p6 = new Person("Jack", "Doe", "jack.doe@gmail.com", "123456789", LocalDate.parse("19.01.1990"), "123456789");
+        Person p1 = new Person("John", "Doe", "john.doe@gmail.com", "123456789", LocalDate.parse("19.12.1990"), "123456789", Double.parseDouble("300,50"));
+        Person p2 = new Person("Jim", "Paul", "jim.pau@gmail.com", "987654321", LocalDate.parse("19.08.1990"), "987654321", Double.parseDouble("50,99") );
+        Person p3 = new Person("Jane", "Doe", "jane.doe@gmail.com", "123456789", LocalDate.parse("19.09.1990"), "123456789", Double.parseDouble("1000,00"));
+        Person p4 = new Person("Jack", "Doe", "jack.doe@gmail.com", "123456789", LocalDate.parse("19.10.1990"), "123456789", Double.parseDouble("5367,90"));
+        Person p5 = new Person("Jill", "Doe", "jill.doe@gmail.com", "123456789", LocalDate.parse("19.11.1990"), "123456789", Double.parseDouble("743,47"));
+        Person p6 = new Person("Jack", "Doe", "jack.doe@gmail.com", "123456789", LocalDate.parse("19.01.1990"), "123456789", Double.parseDouble("100000,45"));
 
         // airports
         Location l1 = new Location("Austria", "Vienna", "Vienna International Airport", "1300 Schwechat", "VIE");
