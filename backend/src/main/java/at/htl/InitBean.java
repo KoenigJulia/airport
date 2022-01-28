@@ -2,8 +2,10 @@ package at.htl;
 
 import at.htl.workloads.location.Location;
 import at.htl.workloads.person.Person;
+import at.htl.workloads.pilot.Pilot;
 import io.quarkus.runtime.StartupEvent;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -26,6 +28,10 @@ public class InitBean {
         Location l3 = new Location("Austria", "Linz", "Linz Airport", "Flughafenstraße 1, 4063 Hörsching", "LNZ");
 
         // pilots
+        Pilot pi1 = new Pilot("Bill", "Chill", "bill.chill@gmail.com", "194206421", LocalDate.parse("24.01.1980"), "098765432", "PI01", BigDecimal.valueOf(1500.00));
+        Pilot pi2 = new Pilot("Hillary", "Right", "hillary.right@gmail.com", "863210631", LocalDate.parse("10.11.1997"), "764320196", "PI02", BigDecimal.valueOf(2500.00));
+        Pilot pi3 = new Pilot("Johnathan", "Johnson", "johnathan.johnson@gmail.com", "865432960", LocalDate.parse("21.06.1988"), "438291063", "PI03", BigDecimal.valueOf(1200.00));
+        Pilot pi4 = new Pilot("Jenny", "Air", "jenny.air@gmail.com", "851230632", LocalDate.parse("05.10.1990"), "865424210", "PI04", BigDecimal.valueOf(1000.00));
 
         // luggage
 
