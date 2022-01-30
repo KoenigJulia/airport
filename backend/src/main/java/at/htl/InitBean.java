@@ -1,8 +1,12 @@
 package at.htl;
 
+import at.htl.workloads.airplane.Airplane;
+import at.htl.workloads.flight.Flight;
 import at.htl.workloads.location.Location;
+import at.htl.workloads.luggage.Luggage;
 import at.htl.workloads.person.Person;
 import at.htl.workloads.pilot.Pilot;
+import at.htl.workloads.ticket.Ticket;
 import io.quarkus.runtime.StartupEvent;
 
 import java.math.BigDecimal;
@@ -34,12 +38,33 @@ public class InitBean {
         Pilot pi4 = new Pilot("Jenny", "Air", "jenny.air@gmail.com", "851230632", LocalDate.parse("05.10.1990"), "865424210", "PI04", BigDecimal.valueOf(1000.00));
 
         // luggage
+        //TODO(fields)
+        Luggage lu1 = new Luggage();
+        Luggage lu2 = new Luggage();
+        Luggage lu3 = new Luggage();
+        Luggage lu4 = new Luggage();
+        Luggage lu5 = new Luggage();
 
         // airplane
+        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 20, 8, 10000.00, 300.00);
+        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 80, 10, 10500.00, 250.00);
+        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 100, 8, 11000.00, 200.00);
 
         // flight
+        //TODO(fields)
+        Flight fl1 = new Flight();
+        Flight fl2 = new Flight();
+        Flight fl3 = new Flight();
+        Flight fl4 = new Flight();
+        Flight fl5 = new Flight();
 
         // ticket
-
+        //TODO(fields)
+        Ticket t1 = new Ticket();
+        Ticket t2 = new Ticket();
+        Ticket t3 = new Ticket();
+        Ticket t4 = new Ticket();
+        Ticket t5 = new Ticket();
+        Ticket t6 = new Ticket();
     }
 }
