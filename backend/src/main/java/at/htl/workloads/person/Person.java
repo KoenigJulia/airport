@@ -19,6 +19,14 @@ public class Person {
 
     public Person() {
     }
+    public Person(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.birthdate = birthdate;
+        this.socialSecurityNumber = socialSecurityNumber;
+    }
 
     public Person(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, Double flightMiles) {
         this.firstName = firstName;
