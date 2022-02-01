@@ -1,21 +1,24 @@
 package at.htl.workloads.bus;
 
-import at.htl.workloads.person.Person;
-
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@ApplicationScoped
 public class BusRepository {
-    private final EntityManager em;
+    public final EntityManager em;
 
     public BusRepository(EntityManager em) {
         this.em = em;
     }
 
+    @Transactional
     public void add(Bus bus){
         this.em.persist(bus);
     }
 
+    @Transactional
     public void update(Bus bus){
         this.em.merge(bus);
     }

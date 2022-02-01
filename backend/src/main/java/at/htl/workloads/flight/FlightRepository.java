@@ -2,6 +2,7 @@ package at.htl.workloads.flight;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -12,10 +13,12 @@ public class FlightRepository {
         this.em = em;
     }
 
+    @Transactional
     public void add(Flight flight) {
         this.em.persist(flight);
     }
 
+    @Transactional
     public void update(Flight flight) {
         this.em.merge(flight);
     }

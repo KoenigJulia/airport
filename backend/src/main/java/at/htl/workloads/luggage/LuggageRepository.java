@@ -2,6 +2,7 @@ package at.htl.workloads.luggage;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -12,10 +13,12 @@ public class LuggageRepository {
         this.em = em;
     }
 
+    @Transactional
     public void add(Luggage luggage) {
         this.em.persist(luggage);
     }
 
+    @Transactional
     public void update(Luggage luggage) {
         this.em.merge(luggage);
     }

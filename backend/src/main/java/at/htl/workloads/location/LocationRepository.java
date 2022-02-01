@@ -1,19 +1,24 @@
 package at.htl.workloads.location;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@ApplicationScoped
 public class LocationRepository {
-    private final EntityManager em;
+    public final EntityManager em;
 
     public LocationRepository(EntityManager em) {
         this.em = em;
     }
 
+    @Transactional
     public void add(Location location){
         this.em.persist(location);
     }
 
+    @Transactional
     public void update(Location location){
         this.em.merge(location);
     }

@@ -2,6 +2,7 @@ package at.htl.workloads.employee;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -12,10 +13,12 @@ public class EmployeeRepository {
         this.em = em;
     }
 
+    @Transactional
     public void add(Employee employee) {
         this.em.persist(employee);
     }
 
+    @Transactional
     public void update(Employee employee) {
         this.em.merge(employee);
     }

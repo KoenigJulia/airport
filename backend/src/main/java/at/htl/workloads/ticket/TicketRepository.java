@@ -2,6 +2,7 @@ package at.htl.workloads.ticket;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -12,10 +13,12 @@ public class TicketRepository {
         this.em = em;
     }
 
+    @Transactional
     public void add(Ticket ticket){
         this.em.persist(ticket);
     }
 
+    @Transactional
     public void update(Ticket ticket) {
         this.em.merge(ticket);
     }

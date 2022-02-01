@@ -2,6 +2,7 @@ package at.htl.workloads.pilot;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -12,10 +13,12 @@ public class PilotRepository {
         this.em = em;
     }
 
+    @Transactional
     public void add(Pilot pilot) {
         this.em.persist(pilot);
     }
 
+    @Transactional
     public void update(Pilot pilot) {
         this.em.merge(pilot);
     }

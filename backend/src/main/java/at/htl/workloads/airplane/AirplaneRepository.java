@@ -1,19 +1,24 @@
 package at.htl.workloads.airplane;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
+@ApplicationScoped
 public class AirplaneRepository {
-    private final EntityManager em;
+    public final EntityManager em;
 
     public AirplaneRepository(EntityManager em) {
         this.em = em;
     }
 
+    @Transactional
     public void add(Airplane airplane){
         this.em.persist(airplane);
     }
 
+    @Transactional
     public void update(Airplane airplane){
         this.em.merge(airplane);
     }
