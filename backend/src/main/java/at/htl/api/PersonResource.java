@@ -1,4 +1,4 @@
-package api;
+package at.htl.api;
 
 import at.htl.workloads.person.Person;
 import at.htl.workloads.person.PersonRepository;
