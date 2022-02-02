@@ -1,5 +1,7 @@
 package at.htl.workloads.bus;
 
+import at.htl.workloads.airplane.Airplane;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -34,5 +36,11 @@ public class BusRepository {
         return this.em
                 .createQuery("select b from Bus b", Bus.class)
                 .getResultList();
+    }
+
+    public Bus deleteBus(Long id){
+        Bus bus = this.em.find(Bus.class,id);
+        this.em.remove(bus);
+        return bus;
     }
 }

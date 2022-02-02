@@ -1,5 +1,7 @@
 package at.htl.workloads.flight;
 
+import at.htl.workloads.bus.Bus;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -35,4 +37,11 @@ public class FlightRepository {
                 .createQuery("select f from Flight f", Flight.class)
                 .getResultList();
     }
+
+    public Flight deleteFlight(Long id){
+        Flight flight = this.em.find(Flight.class,id);
+        this.em.remove(flight);
+        return flight;
+    }
+
 }

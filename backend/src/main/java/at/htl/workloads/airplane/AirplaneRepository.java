@@ -35,4 +35,10 @@ public class AirplaneRepository {
                 .createQuery("select a from Airplane a", Airplane.class)
                 .getResultList();
     }
+
+    public Airplane deleteAirplane(Long id){
+        Airplane airplane = this.em.find(Airplane.class,id);
+        this.em.remove(airplane);
+        return airplane;
+    }
 }

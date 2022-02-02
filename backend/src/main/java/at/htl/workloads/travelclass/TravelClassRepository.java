@@ -1,5 +1,7 @@
 package at.htl.workloads.travelclass;
 
+import at.htl.workloads.bus.Bus;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -34,4 +36,11 @@ public class TravelClassRepository {
                 .createQuery("select tr from TravelClass tr", TravelClass.class)
                 .getResultList();
     }
+
+    public TravelClass deleteTravelClass(Long id){
+        TravelClass travelClass = this.em.find(TravelClass.class,id);
+        this.em.remove(travelClass);
+        return travelClass;
+    }
+
 }

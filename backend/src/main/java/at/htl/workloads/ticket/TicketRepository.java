@@ -1,5 +1,7 @@
 package at.htl.workloads.ticket;
 
+import at.htl.workloads.bus.Bus;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -35,4 +37,11 @@ public class TicketRepository {
                 .createQuery("select t from Ticket t", Ticket.class)
                 .getResultList();
     }
+
+    public Ticket deleteTicket(Long id){
+        Ticket ticket = this.em.find(Ticket.class,id);
+        this.em.remove(ticket);
+        return ticket;
+    }
+
 }

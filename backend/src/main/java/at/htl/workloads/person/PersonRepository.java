@@ -1,5 +1,7 @@
 package at.htl.workloads.person;
 
+import at.htl.workloads.bus.Bus;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -35,4 +37,11 @@ public class PersonRepository {
                 .createQuery("select p from Person p", Person.class)
                 .getResultList();
     }
+
+    public Person deletePerson(Long id){
+        Person person = this.em.find(Person.class,id);
+        this.em.remove(person);
+        return person;
+    }
+
 }

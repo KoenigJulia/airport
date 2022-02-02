@@ -1,5 +1,7 @@
 package at.htl.workloads.luggage;
 
+import at.htl.workloads.bus.Bus;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -35,4 +37,11 @@ public class LuggageRepository {
                 .createQuery("select l from Luggage l", Luggage.class)
                 .getResultList();
     }
+
+    public Luggage deleteLuggage(Long id){
+        Luggage luggage = this.em.find(Luggage.class,id);
+        this.em.remove(luggage);
+        return luggage;
+    }
+
 }

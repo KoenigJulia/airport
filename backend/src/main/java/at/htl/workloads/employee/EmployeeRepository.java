@@ -1,5 +1,7 @@
 package at.htl.workloads.employee;
 
+import at.htl.workloads.airplane.Airplane;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
@@ -34,5 +36,11 @@ public class EmployeeRepository {
         return this.em
                 .createQuery("select e from Employee e", Employee.class)
                 .getResultList();
+    }
+
+    public Employee deleteEmployee(Long id){
+        Employee employee = this.em.find(Employee.class,id);
+        this.em.remove(employee);
+        return employee;
     }
 }
