@@ -13,12 +13,10 @@ public class BusRepository {
         this.em = em;
     }
 
-    @Transactional
     public void add(Bus bus){
         this.em.persist(bus);
     }
 
-    @Transactional
     public void update(Bus bus){
         this.em.merge(bus);
     }

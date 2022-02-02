@@ -13,12 +13,10 @@ public class EmployeeRepository {
         this.em = em;
     }
 
-    @Transactional
     public void add(Employee employee) {
         this.em.persist(employee);
     }
 
-    @Transactional
     public void update(Employee employee) {
         this.em.merge(employee);
     }

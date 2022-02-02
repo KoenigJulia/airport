@@ -13,12 +13,10 @@ public class FlightRepository {
         this.em = em;
     }
 
-    @Transactional
     public void add(Flight flight) {
         this.em.persist(flight);
     }
 
-    @Transactional
     public void update(Flight flight) {
         this.em.merge(flight);
     }

@@ -3,7 +3,7 @@ package at.htl.workloads.travelclass;
 import javax.persistence.*;
 
 @Entity
-public class Travelclass {
+public class TravelClass {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,7 +14,7 @@ public class Travelclass {
     private boolean cabinLuggage;
 
     //region constructor
-    public Travelclass(String name, Double price, boolean legroom, boolean entertainment, boolean cabinLuggage) {
+    public TravelClass(String name, Double price, boolean legroom, boolean entertainment, boolean cabinLuggage) {
         this.name = name;
         this.price = price;
         this.legroom = legroom;
@@ -22,7 +22,7 @@ public class Travelclass {
         this.cabinLuggage = cabinLuggage;
     }
 
-    public Travelclass() {
+    public TravelClass() {
     }
     //endregion
 
@@ -30,30 +30,39 @@ public class Travelclass {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Double getPrice() {
         return price;
     }
+
     public void setPrice(Double price) {
         this.price = price;
     }
+
     public boolean isLegroom() {
         return legroom;
     }
+
     public void setLegroom(boolean legroom) {
         this.legroom = legroom;
     }
+
     public boolean isEntertainment() {
         return entertainment;
     }
+
     public void setEntertainment(boolean entertainment) {
         this.entertainment = entertainment;
     }
+
     public boolean isCabinLuggage() {
         return cabinLuggage;
     }
+
     public void setCabinLuggage(boolean cabinLuggage) {
         this.cabinLuggage = cabinLuggage;
     }

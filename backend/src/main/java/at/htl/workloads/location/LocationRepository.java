@@ -13,12 +13,10 @@ public class LocationRepository {
         this.em = em;
     }
 
-    @Transactional
     public void add(Location location){
         this.em.persist(location);
     }
 
-    @Transactional
     public void update(Location location){
         this.em.merge(location);
     }

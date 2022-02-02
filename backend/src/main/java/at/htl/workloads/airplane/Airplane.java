@@ -23,53 +23,68 @@ public class Airplane {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getAirplaneNr() {
         return airplaneNr;
     }
+
     public void setAirplaneNr(String airplaneNr) {
         this.airplaneNr = airplaneNr;
     }
+
     public Double getFuelCapacity() {
         return fuelCapacity;
     }
+
     public void setFuelCapacity(Double fuelCapacity) {
         this.fuelCapacity = fuelCapacity;
     }
+
     public Double getActualFuel() {
         return actualFuel;
     }
+
     public void setActualFuel(Double actualFuel) {
         this.actualFuel = actualFuel;
     }
+
     public Integer getSeatCapacity() {
         return seatCapacity;
     }
+
     public void setSeatCapacity(Integer seatCapacity) {
         this.seatCapacity = seatCapacity;
     }
+
     public Integer getCrew() {
         return crew;
     }
+
     public void setCrew(Integer crew) {
         this.crew = crew;
     }
+
     public Double getMaxHeight() {
         return maxHeight;
     }
+
     public void setMaxHeight(Double maxHeight) {
         this.maxHeight = maxHeight;
     }
+
     public Double getMaxSpeed() {
         return maxSpeed;
     }
+
     public void setMaxSpeed(Double maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
-    //endregion
-    //region constructor
+
+    //region Description
     public Airplane(String airplaneNr, Double fuelCapacity, Double actualFuel, Integer seatCapacity, Integer crew, Double maxHeight, Double maxSpeed) {
         this.airplaneNr = airplaneNr;
         this.fuelCapacity = fuelCapacity;
@@ -79,6 +94,7 @@ public class Airplane {
         this.maxHeight = maxHeight;
         this.maxSpeed = maxSpeed;
     }
+
     public Airplane() {
     }
     //endregion

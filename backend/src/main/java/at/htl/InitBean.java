@@ -18,8 +18,8 @@ import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.pilot.PilotRepository;
 import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
-import at.htl.workloads.travelclass.Travelclass;
-import at.htl.workloads.travelclass.TravelclassRepository;
+import at.htl.workloads.travelclass.TravelClass;
+import at.htl.workloads.travelclass.TravelClassRepository;
 import io.quarkus.runtime.StartupEvent;
 
 import java.math.BigDecimal;
@@ -27,7 +27,7 @@ import java.time.LocalDate;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
-import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @ApplicationScoped
 public class InitBean {
@@ -40,7 +40,7 @@ public class InitBean {
     private final PersonRepository personRepository;
     private final PilotRepository pilotRepository;
     private final TicketRepository ticketRepository;
-    private final TravelclassRepository travelclassRepository;
+    private final TravelClassRepository travelclassRepository;
 
     public InitBean(
                     AirplaneRepository airplaneRepository,
@@ -52,7 +52,7 @@ public class InitBean {
                     PersonRepository personRepository,
                     PilotRepository pilotRepository,
                     TicketRepository ticketRepository,
-                    TravelclassRepository travelclassRepository) {
+                    TravelClassRepository travelclassRepository) {
         this.airplaneRepository = airplaneRepository;
         this.busRepository = busRepository;
         this.employeeRepository = employeeRepository;
@@ -65,12 +65,13 @@ public class InitBean {
         this.travelclassRepository = travelclassRepository;
     }
 
+    @Transactional
     void init(@Observes StartupEvent event){
 
         //travelclass
-        Travelclass trC1 = new Travelclass("third", 150.00, false, false,true);
-        Travelclass trC2 = new Travelclass("second", 230.00, false, true, true);
-        Travelclass trC3 = new Travelclass("first", 300.00, true, true, true);
+        TravelClass trC1 = new TravelClass("third", 150.00, false, false,true);
+        TravelClass trC2 = new TravelClass("second", 230.00, false, true, true);
+        TravelClass trC3 = new TravelClass("first", 300.00, true, true, true);
         travelclassRepository.add(trC1);
         travelclassRepository.add(trC2);
         travelclassRepository.add(trC3);

@@ -2,7 +2,7 @@ package at.htl.workloads.ticket;
 
 import at.htl.workloads.flight.Flight;
 import at.htl.workloads.person.Person;
-import at.htl.workloads.travelclass.Travelclass;
+import at.htl.workloads.travelclass.TravelClass;
 
 import javax.persistence.*;
 
@@ -18,7 +18,7 @@ public class Ticket {
     private Double price;
     private Integer seatNumber;
     @ManyToOne
-    private Travelclass travelclass;
+    private TravelClass travelclass;
     //region gettersetter
     public Long getId() {
         return id;

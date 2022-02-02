@@ -13,12 +13,10 @@ public class TicketRepository {
         this.em = em;
     }
 
-    @Transactional
     public void add(Ticket ticket){
         this.em.persist(ticket);
     }
 
-    @Transactional
     public void update(Ticket ticket) {
         this.em.merge(ticket);
     }

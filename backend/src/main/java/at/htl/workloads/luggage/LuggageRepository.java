@@ -13,19 +13,17 @@ public class LuggageRepository {
         this.em = em;
     }
 
-    @Transactional
     public void add(Luggage luggage) {
         this.em.persist(luggage);
     }
 
-    @Transactional
     public void update(Luggage luggage) {
         this.em.merge(luggage);
     }
 
     public Luggage getLuggage(Long id) {
         var query = this.em
-                .createQuery("select l from Luggage l where p.id = :id", Luggage.class)
+                .createQuery("select l from Luggage l where l.id = :id", Luggage.class)
                 .setParameter("id", id);
 
         return query.getResultList().stream()

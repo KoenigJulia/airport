@@ -13,12 +13,10 @@ public class AirplaneRepository {
         this.em = em;
     }
 
-    @Transactional
     public void add(Airplane airplane){
         this.em.persist(airplane);
     }
 
-    @Transactional
     public void update(Airplane airplane){
         this.em.merge(airplane);
     }
