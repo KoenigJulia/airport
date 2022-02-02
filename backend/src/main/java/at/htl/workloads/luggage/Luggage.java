@@ -17,7 +17,6 @@ public class Luggage {
     //region constructor
     public Luggage() {
     }
-
     public Luggage(Double weight, Size size, String luggageNumber) {
         this.weight = weight;
         this.size = size;

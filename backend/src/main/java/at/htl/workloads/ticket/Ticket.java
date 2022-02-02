@@ -17,17 +17,19 @@ public class Ticket {
     private Person person;
     private Double price;
     private Integer seatNumber;
+    private String rowNumber;
     @ManyToOne
     private TravelClass travelclass;
 
     //region constructor
     public Ticket() {
     }
-    public Ticket(Flight flight, Person person, Double price, Integer seatNumber, TravelClass travelclass) {
+    public Ticket(Flight flight, Person person, Double price, Integer seatNumber, String rowNumber, TravelClass travelclass) {
         this.flight = flight;
         this.person = person;
         this.price = price;
         this.seatNumber = seatNumber;
+        this.rowNumber = rowNumber;
         this.travelclass = travelclass;
     }
     //endregion

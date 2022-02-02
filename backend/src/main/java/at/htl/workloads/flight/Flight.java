@@ -28,8 +28,20 @@ public class Flight {
     private List<Employee> flightAttendants;
     @OneToMany
     private List<Pilot> pilots;
-    @OneToMany
-    private List<Person> personList;
+
+    //region constructor
+    public Flight() {
+    }
+    public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, List<Pilot> pilots) {
+        this.startDestination = startDestination;
+        this.endDestination = endDestination;
+        this.distance = distance;
+        this.airplane = airplane;
+        this.startTime = startTime;
+        this.flightAttendants = flightAttendants;
+        this.pilots = pilots;
+    }
+    //endregion
     //region gettersetter
     public Long getId() {
         return id;
@@ -78,12 +90,6 @@ public class Flight {
     }
     public void setPilots(List<Pilot> pilots) {
         this.pilots = pilots;
-    }
-    public List<Person> getPersonList() {
-        return personList;
-    }
-    public void setPersonList(List<Person> personList) {
-        this.personList = personList;
     }
     //endregion
 }
