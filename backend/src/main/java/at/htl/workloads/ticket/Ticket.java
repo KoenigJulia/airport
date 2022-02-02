@@ -19,6 +19,18 @@ public class Ticket {
     private Integer seatNumber;
     @ManyToOne
     private TravelClass travelclass;
+
+    //region constructor
+    public Ticket() {
+    }
+    public Ticket(Flight flight, Person person, Double price, Integer seatNumber, TravelClass travelclass) {
+        this.flight = flight;
+        this.person = person;
+        this.price = price;
+        this.seatNumber = seatNumber;
+        this.travelclass = travelclass;
+    }
+    //endregion
     //region gettersetter
     public Long getId() {
         return id;
