@@ -157,32 +157,32 @@ public class InitBean {
         // flight
         //TODO(fields)
         //public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, List<Pilot> pilots) {
-        Flight fl1 = new Flight(l1, l3,209.00 ,ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), List.of(pi1,pi2));
-        Flight fl2 = new Flight(l2, l1,201.00 ,ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), List.of(pi2, pi4));
-        Flight fl3 = new Flight(l3,l1, 209.00,ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), List.of(pi3, pi1));
-        Flight fl4 = new Flight(l2, l1,201.00 ,ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1,e3), List.of(pi2, pi3));
-        Flight fl5 = new Flight(l2, l3,225.00 ,ap1, LocalDateTime.of(2022, Month.SEPTEMBER, 6, 17, 0), List.of(e2,e3), List.of(pi1, pi4));
-        flightRepository.add(fl1);
-        flightRepository.add(fl2);
-        flightRepository.add(fl3);
-        flightRepository.add(fl4);
-        flightRepository.add(fl5);
-
-        // ticket
-        //TODO(fields)
-        //public Ticket(Flight flight, Person person, Double price, Integer seatNumber, String rowNumber, TravelClass travelclass) {
-        Ticket t1 = new Ticket(fl1, p2, 330.88, 16, "F", trC3);
-        Ticket t2 = new Ticket(fl1, p3, 340.77, 27, "H", trC3);
-        Ticket t3 = new Ticket(fl2, p5, 1500.40, 3, "A", trC1);
-        Ticket t4 = new Ticket(fl3, p3, 1020.80, 1, "A", trC2);
-        Ticket t5 = new Ticket(fl4, p6, 892.46, 20, "E", trC2);
-        Ticket t6 = new Ticket(fl5, p4, 2993.83, 1, "A", trC1);
-        ticketRepository.add(t1);
-        ticketRepository.add(t2);
-        ticketRepository.add(t3);
-        ticketRepository.add(t4);
-        ticketRepository.add(t5);
-        ticketRepository.add(t6);
+//        Flight fl1 = new Flight(l1, l3,209.00 ,ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
+//        Flight fl2 = new Flight(l2, l1,201.00 ,ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), pi2, pi4);
+//        Flight fl3 = new Flight(l3,l1, 209.00,ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), pi3, pi1);
+//        Flight fl4 = new Flight(l2, l1,201.00 ,ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1,e3), pi2, pi3);
+//        Flight fl5 = new Flight(l2, l3,225.00 ,ap1, LocalDateTime.of(2022, Month.SEPTEMBER, 6, 17, 0), List.of(e2,e3), pi1, pi4);
+//        flightRepository.add(fl1);
+//        flightRepository.add(fl2);
+//        flightRepository.add(fl3);
+//        flightRepository.add(fl4);
+//        flightRepository.add(fl5);
+//
+//        // ticket
+//        //TODO(fields)
+//        //public Ticket(Flight flight, Person person, Double price, Integer seatNumber, String rowNumber, TravelClass travelclass) {
+//        Ticket t1 = new Ticket(fl1, p2, 330.88, 16, "F", trC3);
+//        Ticket t2 = new Ticket(fl1, p3, 340.77, 27, "H", trC3);
+//        Ticket t3 = new Ticket(fl2, p5, 1500.40, 3, "A", trC1);
+//        Ticket t4 = new Ticket(fl3, p3, 1020.80, 1, "A", trC2);
+//        Ticket t5 = new Ticket(fl4, p6, 892.46, 20, "E", trC2);
+//        Ticket t6 = new Ticket(fl5, p4, 2993.83, 1, "A", trC1);
+//        ticketRepository.add(t1);
+//        ticketRepository.add(t2);
+//        ticketRepository.add(t3);
+//        ticketRepository.add(t4);
+//        ticketRepository.add(t5);
+//        ticketRepository.add(t6);
 
     }
 }

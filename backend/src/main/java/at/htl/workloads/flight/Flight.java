@@ -25,72 +25,102 @@ public class Flight {
     @ManyToOne
     private Airplane airplane;
     private LocalDateTime startTime;
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "")
+    @OneToMany
     private List<Employee> flightAttendants;
-    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "")
-    private List<Pilot> pilots;
+    @ManyToOne
+    private Pilot pilot;
+    @ManyToOne
+    private Pilot coPilot;
 
     //region constructor
     public Flight() {
     }
-    public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, List<Pilot> pilots) {
+
+    public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, Pilot pilot, Pilot coPilot) {
         this.startDestination = startDestination;
         this.endDestination = endDestination;
         this.distance = distance;
         this.airplane = airplane;
         this.startTime = startTime;
         this.flightAttendants = flightAttendants;
-        this.pilots = pilots;
+//        this.pilots = pilots;
+        this.pilot = pilot;
+        this.coPilot = coPilot;
     }
+
     //endregion
     //region gettersetter
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public Location getStartDestination() {
         return startDestination;
     }
+
     public void setStartDestination(Location startDestination) {
         this.startDestination = startDestination;
     }
+
     public Location getEndDestination() {
         return endDestination;
     }
+
     public void setEndDestination(Location endDestination) {
         this.endDestination = endDestination;
     }
+
     public Double getDistance() {
         return distance;
     }
+
     public void setDistance(Double distance) {
         this.distance = distance;
     }
+
     public Airplane getAirplane() {
         return airplane;
     }
+
     public void setAirplane(Airplane airplane) {
         this.airplane = airplane;
     }
+
     public LocalDateTime getStartTime() {
         return startTime;
     }
+
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
+
     public List<Employee> getFlightAttendants() {
         return flightAttendants;
     }
+
     public void setFlightAttendants(List<Employee> flightAttendants) {
         this.flightAttendants = flightAttendants;
     }
-    public List<Pilot> getPilots() {
-        return pilots;
+
+    public Pilot getPilot() {
+        return pilot;
     }
-    public void setPilots(List<Pilot> pilots) {
-        this.pilots = pilots;
+
+    public void setPilot(Pilot pilot) {
+        this.pilot = pilot;
     }
+
+    public Pilot getCoPilot() {
+        return coPilot;
+    }
+
+    public void setCoPilot(Pilot coPilot) {
+        this.coPilot = coPilot;
+    }
+
     //endregion
 }
