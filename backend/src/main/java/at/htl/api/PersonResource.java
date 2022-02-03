@@ -8,7 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
-@Path("Person")
+@Path("person")
 public class PersonResource {
     private final PersonRepository personRepository;
 
