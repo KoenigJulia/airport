@@ -24,13 +24,15 @@ public class Flight {
     private Double distance;
     @ManyToOne
     private Airplane airplane;
-    private LocalDateTime startTime;
-    @OneToMany
+    @ManyToMany
     private List<Employee> flightAttendants;
     @ManyToOne
     private Pilot pilot;
     @ManyToOne
     private Pilot coPilot;
+
+    private LocalDateTime startTime;
+
 
     //region constructor
     public Flight() {
