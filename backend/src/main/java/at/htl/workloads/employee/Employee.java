@@ -8,20 +8,19 @@ import java.time.LocalDate;
 
 @Entity
 public class Employee extends Person {
-
     private String employeeNumber;
     private BigDecimal salary;
     private boolean isFlightAttendant;
 
-    public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, String employeeNumber, BigDecimal salary, boolean isFlightAttendant) {
-        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber);
+    public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, String employeeNumber, BigDecimal salary, Double flightMiles, boolean isFlightAttendant) {
+        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, flightMiles);
         this.employeeNumber = employeeNumber;
         this.salary = salary;
         this.isFlightAttendant = isFlightAttendant;
     }
 
-    public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber) {
-        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber);
+    public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, Double flightMiles, boolean isFlightAttendant) {
+        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, flightMiles);
     }
 
     public Employee() {

@@ -5,6 +5,7 @@ import at.htl.workloads.employee.Employee;
 import at.htl.workloads.location.Location;
 import at.htl.workloads.person.Person;
 import at.htl.workloads.pilot.Pilot;
+import org.jboss.resteasy.spi.touri.MappedBy;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -24,9 +25,9 @@ public class Flight {
     @ManyToOne
     private Airplane airplane;
     private LocalDateTime startTime;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "")
     private List<Employee> flightAttendants;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "")
     private List<Pilot> pilots;
 
     //region constructor
