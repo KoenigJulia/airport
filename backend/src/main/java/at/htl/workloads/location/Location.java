@@ -15,6 +15,7 @@ public class Location {
     private String airportName;
     private String address;
     private String IATA; //AirportNummer
+    private String gate;
 
     //region gettersetter
 
@@ -66,18 +67,27 @@ public class Location {
         this.IATA = IATA;
     }
 
+    public String getGate() {
+        return gate;
+    }
+
+    public void setGate(String gate) {
+        this.gate = gate;
+    }
+
     //endregion
     //region constructor
 
     public Location() {
     }
 
-    public Location(String countryName, String cityName, String airportName, String address, String IATA) {
+    public Location(String countryName, String cityName, String airportName, String address, String IATA, String gate) {
         this.countryName = countryName;
         this.cityName = cityName;
         this.airportName = airportName;
         this.address = address;
         this.IATA = IATA;
+        this.gate = gate;
     }
 
     //endregion
