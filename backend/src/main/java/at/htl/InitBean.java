@@ -176,16 +176,14 @@ public class InitBean {
         // seat
         Seat s1 = new Seat(1, "A");
         Seat s2 = new Seat(3, "A");
-        Seat s3 = new Seat(1, "A");
-        Seat s4 = new Seat(20, "E");
-        Seat s5 = new Seat(27, "H");
-        Seat s6 = new Seat(16, "F");
+        Seat s3 = new Seat(20, "E");
+        Seat s4 = new Seat(27, "H");
+        Seat s5 = new Seat(16, "F");
         seatRepository.add(s1);
         seatRepository.add(s2);
         seatRepository.add(s3);
         seatRepository.add(s4);
         seatRepository.add(s5);
-        seatRepository.add(s6);
 
 //
 //        // ticket
@@ -203,7 +201,7 @@ public class InitBean {
         luggage.add(lu3);
         luggage.add(lu4);
         Ticket t2 = new Ticket(fl1, p3, 340.77, s5, trC3, luggage);
-        Ticket t1 = new Ticket(fl1, p2, 330.88, s6, trC3, luggage);
+        Ticket t1 = new Ticket(fl1, p2, 330.88, s1, trC3, luggage);
         ticketRepository.add(t1);
         ticketRepository.add(t2);
         ticketRepository.add(t3);
