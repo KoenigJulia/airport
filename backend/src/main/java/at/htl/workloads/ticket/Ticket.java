@@ -2,6 +2,7 @@ package at.htl.workloads.ticket;
 
 import at.htl.workloads.flight.Flight;
 import at.htl.workloads.person.Person;
+import at.htl.workloads.seat.Seat;
 import at.htl.workloads.travelclass.TravelClass;
 
 import javax.persistence.*;
@@ -16,20 +17,19 @@ public class Ticket {
     @ManyToOne
     private Person person;
     private Double price;
-    private Integer seatNumber;
-    private String rowNumber;
+    @ManyToOne
+    private Seat seat;
     @ManyToOne
     private TravelClass travelclass;
 
     //region constructor
     public Ticket() {
     }
-    public Ticket(Flight flight, Person person, Double price, Integer seatNumber, String rowNumber, TravelClass travelclass) {
+    public Ticket(Flight flight, Person person, Double price, Seat seat, TravelClass travelclass) {
         this.flight = flight;
         this.person = person;
         this.price = price;
-        this.seatNumber = seatNumber;
-        this.rowNumber = rowNumber;
+        this.seat = seat;
         this.travelclass = travelclass;
     }
     //endregion
