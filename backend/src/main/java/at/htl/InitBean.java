@@ -17,6 +17,8 @@ import at.htl.workloads.person.Person;
 import at.htl.workloads.person.PersonRepository;
 import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.pilot.PilotRepository;
+import at.htl.workloads.seat.Seat;
+import at.htl.workloads.seat.SeatRepository;
 import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
 import at.htl.workloads.travelclass.TravelClass;
@@ -46,6 +48,7 @@ public class InitBean {
     private final PilotRepository pilotRepository;
     private final TicketRepository ticketRepository;
     private final TravelClassRepository travelclassRepository;
+    private final SeatRepository seatRepository;
 
     public InitBean(
             AirplaneRepository airplaneRepository,
@@ -57,7 +60,8 @@ public class InitBean {
             PersonRepository personRepository,
             PilotRepository pilotRepository,
             TicketRepository ticketRepository,
-            TravelClassRepository travelclassRepository) {
+            TravelClassRepository travelclassRepository,
+            SeatRepository seatRepository) {
         this.airplaneRepository = airplaneRepository;
         this.busRepository = busRepository;
         this.employeeRepository = employeeRepository;
@@ -68,6 +72,7 @@ public class InitBean {
         this.pilotRepository = pilotRepository;
         this.ticketRepository = ticketRepository;
         this.travelclassRepository = travelclassRepository;
+        this.seatRepository = seatRepository;
     }
 
     @Transactional
@@ -167,6 +172,21 @@ public class InitBean {
         flightRepository.add(fl3);
         flightRepository.add(fl4);
         flightRepository.add(fl5);
+
+        // seat
+        Seat s1 = new Seat(1, "A");
+        Seat s2 = new Seat(3, "A");
+        Seat s3 = new Seat(1, "A");
+        Seat s4 = new Seat(20, "E");
+        Seat s5 = new Seat(27, "H");
+        Seat s6 = new Seat(16, "F");
+        seatRepository.add(s1);
+        seatRepository.add(s2);
+        seatRepository.add(s3);
+        seatRepository.add(s4);
+        seatRepository.add(s5);
+        seatRepository.add(s6);
+
 //
 //        // ticket
 //        //TODO(fields)
@@ -175,15 +195,15 @@ public class InitBean {
 
         luggage.add(lu1);
         luggage.add(lu2);
-        Ticket t6 = new Ticket(fl5, p4, 2993.83, 1, "A", trC1, luggage);
-        Ticket t3 = new Ticket(fl2, p5, 1500.40, 3, "A", trC1, luggage);
+        Ticket t6 = new Ticket(fl5, p4, 2993.83, s1, trC1, luggage);
+        Ticket t3 = new Ticket(fl2, p5, 1500.40, s2, trC1, luggage);
         luggage.add(lu5);
-        Ticket t4 = new Ticket(fl3, p3, 1020.80, 1, "A", trC2, luggage);
-        Ticket t5 = new Ticket(fl4, p6, 892.46, 20, "E", trC2, luggage);
+        Ticket t4 = new Ticket(fl3, p3, 1020.80, s3, trC2, luggage);
+        Ticket t5 = new Ticket(fl4, p6, 892.46, s4, trC2, luggage);
         luggage.add(lu3);
         luggage.add(lu4);
-        Ticket t2 = new Ticket(fl1, p3, 340.77, 27, "H", trC3, luggage);
-        Ticket t1 = new Ticket(fl1, p2, 330.88, 16, "F", trC3, luggage);
+        Ticket t2 = new Ticket(fl1, p3, 340.77, s5, trC3, luggage);
+        Ticket t1 = new Ticket(fl1, p2, 330.88, s6, trC3, luggage);
         ticketRepository.add(t1);
         ticketRepository.add(t2);
         ticketRepository.add(t3);

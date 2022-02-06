@@ -3,6 +3,7 @@ package at.htl.workloads.ticket;
 import at.htl.workloads.flight.Flight;
 import at.htl.workloads.luggage.Luggage;
 import at.htl.workloads.person.Person;
+import at.htl.workloads.seat.Seat;
 import at.htl.workloads.travelclass.TravelClass;
 
 import javax.persistence.*;
@@ -18,8 +19,8 @@ public class Ticket {
     @ManyToOne
     private Person person;
     private Double price;
-    private Integer seatNumber;
-    private String rowNumber;
+    @ManyToOne
+    private Seat seat;
     @ManyToOne
     private TravelClass travelclass;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket")
@@ -28,13 +29,12 @@ public class Ticket {
     //region constructor
     public Ticket() {
     }
-    public Ticket(Flight flight, Person person, Double price, Integer seatNumber, String rowNumber, TravelClass travelclass,
+    public Ticket(Flight flight, Person person, Double price, Seat seat, TravelClass travelclass,
                   List<Luggage> luggage) {
         this.flight = flight;
         this.person = person;
         this.price = price;
-        this.seatNumber = seatNumber;
-        this.rowNumber = rowNumber;
+        this.seat = seat;
         this.travelclass = travelclass;
         this.lugagge = luggage;
     }
@@ -64,18 +64,15 @@ public class Ticket {
     public void setPrice(Double price) {
         this.price = price;
     }
-    public Integer getSeatNumber() {
-        return seatNumber;
+
+    public Seat getSeat() {
+        return seat;
     }
-    public void setSeatNumber(Integer seatNumber) {
-        this.seatNumber = seatNumber;
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
     }
-    public String getRowNumber() {
-        return rowNumber;
-    }
-    public void setRowNumber(String rowNumber) {
-        this.rowNumber = rowNumber;
-    }
+
     public TravelClass getTravelclass() {
         return travelclass;
     }
