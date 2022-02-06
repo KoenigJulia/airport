@@ -16,6 +16,11 @@ public class TicketRepository {
     }
 
     public void add(Ticket ticket){
+        if(ticket.getTravelclass().getMaxLuggage() > ticket.getLugagge().size()){
+            System.out.println("Ticket invalid (too many luggage)");
+            return;
+        }
+
         this.em.persist(ticket);
     }
 

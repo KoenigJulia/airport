@@ -12,14 +12,16 @@ public class TravelClass {
     private boolean legroom;
     private boolean entertainment;
     private boolean cabinLuggage;
+    private int maxLuggage;
 
     //region constructor
-    public TravelClass(String name, Double price, boolean legroom, boolean entertainment, boolean cabinLuggage) {
+    public TravelClass(String name, Double price, boolean legroom, boolean entertainment, boolean cabinLuggage, int maxLuggage) {
         this.name = name;
         this.price = price;
         this.legroom = legroom;
         this.entertainment = entertainment;
         this.cabinLuggage = cabinLuggage;
+        this.maxLuggage = maxLuggage;
     }
 
     public TravelClass() {
@@ -66,5 +68,14 @@ public class TravelClass {
     public void setCabinLuggage(boolean cabinLuggage) {
         this.cabinLuggage = cabinLuggage;
     }
+
+    public int getMaxLuggage() {
+        return maxLuggage;
+    }
+
+    public void setMaxLuggage(int maxLuggage) {
+        this.maxLuggage = maxLuggage;
+    }
+
     //endregion
 }
