@@ -1,9 +1,8 @@
 package at.htl.workloads.luggage;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import at.htl.workloads.ticket.Ticket;
+
+import javax.persistence.*;
 
 @Entity
 public class Luggage {
@@ -13,6 +12,9 @@ public class Luggage {
     private Double weight;
     private Size size;
     private String luggageNumber;
+    @ManyToOne
+    @JoinColumn(name = "ticket_id")
+    private Ticket ticket;
 
     //region constructor
     public Luggage() {
