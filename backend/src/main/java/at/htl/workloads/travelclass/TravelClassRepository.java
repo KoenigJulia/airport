@@ -1,7 +1,5 @@
 package at.htl.workloads.travelclass;
 
-import at.htl.workloads.bus.Bus;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import java.util.List;
