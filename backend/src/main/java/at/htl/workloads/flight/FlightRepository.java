@@ -1,10 +1,9 @@
 package at.htl.workloads.flight;
 
+import at.htl.workloads.seat.Seat;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import javax.ws.rs.QueryParam;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -45,6 +44,13 @@ public class FlightRepository {
                         "f.departureTime >= :startTime and f.arrivalTime <= :endTime", Flight.class)
                 .setParameter("startTime", startTime)
                 .setParameter("endTime", endTime)
+                .getResultList();
+    }
+
+    public List<Seat> getAvailableSeats(long flightId){
+        return this.em
+                .createQuery("select s from Flight f left join f.seats s where f.id = :flightId", Seat.class)
+                .setParameter("flightId", flightId)
                 .getResultList();
     }
 

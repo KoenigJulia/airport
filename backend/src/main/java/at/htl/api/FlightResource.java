@@ -4,7 +4,6 @@ import at.htl.workloads.flight.Flight;
 import at.htl.workloads.flight.FlightRepository;
 
 import javax.annotation.security.RolesAllowed;
-import javax.swing.text.DateFormatter;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -33,6 +32,13 @@ public class FlightResource {
     public Response getAllFlights() {
         var allFlights = this.flightRepository.getAll();
         return Response.ok(allFlights).build();
+    }
+
+    @GET
+    @Path("availableSeats/{flightId}")
+    public Response getAvailableSeats(@QueryParam("flightId") long flightId){
+        var seats = this.flightRepository.getAvailableSeats(flightId);
+        return Response.ok(seats).build();
     }
 
     @GET
