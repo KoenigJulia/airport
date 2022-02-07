@@ -78,6 +78,8 @@ public class FlightRepository {
                 .getResultList();
     }
 
+    // summary flights with total luggage weight
+
     public Flight removeFlight(Long id){
         Flight flight = this.em.find(Flight.class,id);
         this.em.remove(flight);
