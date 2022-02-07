@@ -3,6 +3,9 @@ package at.htl.workloads.flight;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import javax.ws.rs.QueryParam;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @ApplicationScoped
@@ -33,6 +36,15 @@ public class FlightRepository {
     public List<Flight> getAll() {
         return this.em
                 .createQuery("select f from Flight f", Flight.class)
+                .getResultList();
+    }
+
+    public List<Flight> getAllInRange(LocalDateTime startTime, LocalDateTime endTime) {
+        return this.em
+                .createQuery("select f from Flight f where " +
+                        "f.departureTime >= :startTime and f.arrivalTime <= :endTime", Flight.class)
+                .setParameter("startTime", startTime)
+                .setParameter("endTime", endTime)
                 .getResultList();
     }
 

@@ -4,12 +4,15 @@ import at.htl.workloads.flight.Flight;
 import at.htl.workloads.flight.FlightRepository;
 
 import javax.annotation.security.RolesAllowed;
+import javax.swing.text.DateFormatter;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Path("flight")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -17,6 +20,8 @@ import javax.ws.rs.core.UriInfo;
 @RolesAllowed({"user", "admin"})
 public class FlightResource {
     private final FlightRepository flightRepository;
+    
+     DateTimeFormatter dateTimeFormatter= DateTimeFormatter.ofPattern("M/d/yy, h:mm a");
 
     public FlightResource(FlightRepository flightRepository) {
         this.flightRepository = flightRepository;
@@ -27,6 +32,15 @@ public class FlightResource {
     @Path("all")
     public Response getAllFlights() {
         var allFlights = this.flightRepository.getAll();
+        return Response.ok(allFlights).build();
+    }
+
+    @GET
+    @Path("inRange")
+    public Response getAllFlights(@QueryParam("startTime") String startTime, @QueryParam("endTime") String endTime) {
+        LocalDateTime start = LocalDateTime.parse(startTime, dateTimeFormatter);
+        LocalDateTime end = LocalDateTime.parse(endTime, dateTimeFormatter);
+        var allFlights = this.flightRepository.getAllInRange(start, end);
         return Response.ok(allFlights).build();
     }
 

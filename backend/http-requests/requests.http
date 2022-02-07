@@ -1,0 +1,2 @@
+GET localhost:8080/api/flight/1
+Authorization: Basic john.doe@gmail.com pw
