@@ -19,10 +19,9 @@ public class Luggage {
     private Double weight;
     private Size size;
     private String luggageNumber;
-    @JsonbTransient
-    @ManyToOne
-    @JoinColumn(name = "ticket_id")
-    private Ticket ticket;
+//    @JsonbTransient
+//    @ManyToOne
+//    private Ticket ticket;
 
     //region constructor
     public Luggage() {

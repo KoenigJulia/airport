@@ -23,7 +23,7 @@ public class Ticket {
     private Seat seat;
     @ManyToOne
     private TravelClass travelclass;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Luggage> luggage;
 
     //region constructor

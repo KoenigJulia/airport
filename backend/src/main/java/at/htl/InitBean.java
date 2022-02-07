@@ -153,7 +153,9 @@ public class InitBean {
         Luggage lu5 = new Luggage(2.55, Size.Small, "T485");
 
         Ticket t1 = fl1.bookFlight(p2, trC3, 1, List.of(lu1));
+        Ticket t2 = fl1.bookFlight(p3, trC2, 2, List.of(lu2, lu3));
         ticketRepository.add(t1);
+        ticketRepository.add(t2);
 
         //TODO refactor tickets with new seat creation
 

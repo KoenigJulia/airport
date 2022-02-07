@@ -13,6 +13,7 @@ import at.htl.workloads.seat.SeatType;
 import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.travelclass.TravelClass;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -43,6 +44,10 @@ public class Flight {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Seat> seats;
+
+    @JsonbTransient
+    @OneToMany(mappedBy = "flight")
+    private List<Ticket> tickets;
 
 
     //region constructor

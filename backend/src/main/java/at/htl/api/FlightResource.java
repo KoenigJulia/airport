@@ -35,10 +35,31 @@ public class FlightResource {
     }
 
     @GET
+    @Path("tickets/{flightId}")
+    public Response getAllTickets(@QueryParam("flightId") long flightId){
+        var seats = this.flightRepository.getAllTickets(flightId);
+        return Response.ok(seats).build();
+    }
+
+    @GET
     @Path("availableSeats/{flightId}")
     public Response getAvailableSeats(@QueryParam("flightId") long flightId){
         var seats = this.flightRepository.getAvailableSeats(flightId);
         return Response.ok(seats).build();
+    }
+
+    @GET
+    @Path("bookedSeats/{flightId}")
+    public Response getBookedSeats(@QueryParam("flightId") long flightId){
+        var seats = this.flightRepository.getBookedSeats(flightId);
+        return Response.ok(seats).build();
+    }
+
+    @GET
+    @Path("allLuggage/{flightId}")
+    public Response getAllLuggage(@QueryParam("flightId") long flightId){
+        var luggage = this.flightRepository.getAllLuggage(flightId);
+        return Response.ok(luggage).build();
     }
 
     @GET

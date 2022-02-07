@@ -1,6 +1,8 @@
 package at.htl.workloads.flight;
 
+import at.htl.workloads.luggage.Luggage;
 import at.htl.workloads.seat.Seat;
+import at.htl.workloads.ticket.Ticket;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
@@ -47,9 +49,31 @@ public class FlightRepository {
                 .getResultList();
     }
 
+    public List<Ticket> getAllTickets(long flightId){
+        return this.em
+                .createQuery("select t from Flight f left join f.tickets t where f.id = :flightId", Ticket.class)
+                .setParameter("flightId", flightId)
+                .getResultList();
+    }
+
     public List<Seat> getAvailableSeats(long flightId){
         return this.em
                 .createQuery("select s from Flight f left join f.seats s where f.id = :flightId", Seat.class)
+                .setParameter("flightId", flightId)
+                .getResultList();
+    }
+
+    public List<Seat> getBookedSeats(long flightId) {
+        return this.em
+                .createQuery("select t.seat from Flight f left join f.tickets t where f.id = :flightId", Seat.class)
+                .setParameter("flightId", flightId)
+                .getResultList();
+    }
+
+    public List<Luggage> getAllLuggage(long flightId){
+        return this.em
+                .createQuery("select l from Flight f left join f.tickets t left join t.luggage l " +
+                        "where f.id = :flightId", Luggage.class)
                 .setParameter("flightId", flightId)
                 .getResultList();
     }
