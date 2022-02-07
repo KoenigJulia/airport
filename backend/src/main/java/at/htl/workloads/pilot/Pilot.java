@@ -12,8 +12,8 @@ public class Pilot extends Employee {
     private String pilotNumber;
     private Double extraPayment;
     //region constructor
-    public Pilot(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, String employeeNumber, BigDecimal salary, Double flightMiles, String pilotNumber, Double extraPayment) {
-        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, employeeNumber, salary, flightMiles, false);
+    public Pilot(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, String employeeNumber, BigDecimal salary, Double flightMiles, String pilotNumber, Double extraPayment, String password, String role) {
+        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, employeeNumber, salary, flightMiles, false, password, role);
         this.pilotNumber = pilotNumber;
         this.extraPayment = extraPayment;
     }

@@ -12,15 +12,16 @@ public class Employee extends Person {
     private BigDecimal salary;
     private boolean isFlightAttendant;
 
-    public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, String employeeNumber, BigDecimal salary, Double flightMiles, boolean isFlightAttendant) {
-        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, flightMiles);
+    public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, String employeeNumber, BigDecimal salary, Double flightMiles, boolean isFlightAttendant, String password, String role) {
+        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, flightMiles, password, role);
         this.employeeNumber = employeeNumber;
         this.salary = salary;
         this.isFlightAttendant = isFlightAttendant;
     }
 
-    public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, Double flightMiles, boolean isFlightAttendant) {
-        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, flightMiles);
+    public Employee(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, Double flightMiles, boolean isFlightAttendant, String password, String role) {
+        super(firstName, lastName, email, phoneNumber, birthdate, socialSecurityNumber, flightMiles, password, role);
+        this.isFlightAttendant = isFlightAttendant;
     }
 
     public Employee() {

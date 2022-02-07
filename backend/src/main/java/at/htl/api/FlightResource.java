@@ -3,6 +3,7 @@ package at.htl.api;
 import at.htl.workloads.flight.Flight;
 import at.htl.workloads.flight.FlightRepository;
 
+import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.UriInfo;
 @Path("flight")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@RolesAllowed({"user", "admin"})
 public class FlightResource {
     private final FlightRepository flightRepository;
 

@@ -1,21 +1,36 @@
 package at.htl.workloads.person;
 
+import io.quarkus.elytron.security.common.BcryptUtil;
+import io.quarkus.security.jpa.Password;
+import io.quarkus.security.jpa.Roles;
+import io.quarkus.security.jpa.UserDefinition;
+import io.quarkus.security.jpa.Username;
+
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@UserDefinition
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
+    @Username
     private String email;
+    @JsonbTransient
+    @Password
+    public String password;
+    @JsonbTransient
+    @Roles
+    public String role;
     private String phoneNumber;
     private LocalDate birthdate;
     private String socialSecurityNumber;
-    private Double flightMiles;
+    private Double flightMiles; // to remove
 
     public Person() {
     }
@@ -28,7 +43,7 @@ public class Person {
         this.socialSecurityNumber = socialSecurityNumber;
     }
 
-    public Person(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, Double flightMiles) {
+    public Person(String firstName, String lastName, String email, String phoneNumber, LocalDate birthdate, String socialSecurityNumber, Double flightMiles, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -36,6 +51,8 @@ public class Person {
         this.birthdate = birthdate;
         this.socialSecurityNumber = socialSecurityNumber;
         this.flightMiles = flightMiles;
+        this.password = BcryptUtil.bcryptHash(password);;
+        this.role = role;
     }
 
 //region gettersetter
@@ -103,6 +120,23 @@ public class Person {
     public void setFlightMiles(Double flightMiles) {
         this.flightMiles = flightMiles;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     //endregion
 
 
