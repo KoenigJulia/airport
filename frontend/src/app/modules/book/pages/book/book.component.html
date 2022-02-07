@@ -1,1 +1,52 @@
-<p>book works!</p>
+<div class="flex flex-col p-8 space-y-4">
+
+  <h1>Book a flight</h1>
+
+  <mat-label>Date range</mat-label>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date">
+      <input matEndDate placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <h2>Flights</h2>
+  <mat-card class="hover:bg-indigo-50 cursor-pointer" *ngFor="let flight of flights">
+    <div class="flex">
+      <div class="flex-auto w-1/2 p-2">
+        <h2>Departure</h2>
+        <div class="flex">
+          <mat-label>Time:</mat-label>
+          <p class="flex-1 text-right">{{flight.departureTime | date: "short"}}</p>
+        </div>
+        <div class="flex">
+          <mat-label>Airport:</mat-label>
+          <p class="flex-1 text-right">({{flight.departureDestination.IATA}}) {{flight.departureDestination.airportName}}</p>
+        </div>
+        <div class="flex">
+          <mat-label>Gate:</mat-label>
+          <p class="flex-1 text-right">{{flight.departureGate}}</p>
+        </div>
+      </div>
+      <div class="flex-auto w-1/2 p-2">
+        <h2>Arrival</h2>
+        <div class="flex">
+          <mat-label>Time:</mat-label>
+          <p class="flex-1 text-right">{{flight.arrivalTime | date: "short"}}</p>
+        </div>
+        <div class="flex">
+          <mat-label>Airport:</mat-label>
+          <p class="flex-1 text-right">({{flight.arrivalDestination.IATA}}) {{flight.arrivalDestination.airportName}}</p>
+        </div>
+        <div class="flex">
+          <mat-label>Gate:</mat-label>
+          <p class="flex-1 text-right">{{flight.arrivalGate}}</p>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
