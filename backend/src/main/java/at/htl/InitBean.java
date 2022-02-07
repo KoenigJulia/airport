@@ -10,14 +10,11 @@ import at.htl.workloads.location.Location;
 import at.htl.workloads.location.LocationRepository;
 import at.htl.workloads.luggage.Luggage;
 import at.htl.workloads.luggage.LuggageRepository;
-import at.htl.workloads.luggage.Size;
 import at.htl.workloads.person.Person;
 import at.htl.workloads.person.PersonRepository;
 import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.pilot.PilotRepository;
-import at.htl.workloads.seat.Seat;
 import at.htl.workloads.seat.SeatRepository;
-import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
 import at.htl.workloads.travelclass.TravelClass;
 import at.htl.workloads.travelclass.TravelClassRepository;
@@ -106,9 +103,9 @@ public class InitBean {
         personRepository.add(p6);
 
         // airports
-        Location l1 = new Location("Austria", "Vienna", "Vienna International Airport", "1300 Schwechat", "VIE", "G2");
-        Location l2 = new Location("Austria", "Graz", "Graz Airport", "8073 Feldkirchen bei Graz", "GRZ", "G1");
-        Location l3 = new Location("Austria", "Linz", "Linz Airport", "Flughafenstraße 1, 4063 Hörsching", "LNZ", "G1");
+        Location l1 = new Location("Austria", "Vienna", "Vienna International Airport", "1300 Schwechat", "VIE");
+        Location l2 = new Location("Austria", "Graz", "Graz Airport", "8073 Feldkirchen bei Graz", "GRZ");
+        Location l3 = new Location("Austria", "Linz", "Linz Airport", "Flughafenstraße 1, 4063 Hörsching", "LNZ");
         locationRepository.add(l1);
         locationRepository.add(l2);
         locationRepository.add(l3);
@@ -146,11 +143,11 @@ public class InitBean {
         // flight
         //TODO(fields)
         //public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, List<Pilot> pilots) {
-        Flight fl1 = new Flight(l1, l3, 209.00, ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
-        Flight fl2 = new Flight(l2, l1, 201.00, ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), pi2, pi4);
-        Flight fl3 = new Flight(l3, l1, 209.00, ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), pi3, pi1);
-        Flight fl4 = new Flight(l2, l1, 201.00, ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1, e3), pi2, pi3);
-        Flight fl5 = new Flight(l2, l3, 225.00, ap1, LocalDateTime.of(2022, Month.SEPTEMBER, 6, 17, 0), List.of(e2, e3), pi1, pi4);
+        Flight fl1 = new Flight(l1, "G1", l3, "G2", 209.00, ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
+        Flight fl2 = new Flight(l2, "G3", l1, "G6", 201.00, ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), pi2, pi4);
+        Flight fl3 = new Flight(l3, "G1", l1, "G3", 209.00, ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), pi3, pi1);
+        Flight fl4 = new Flight(l2, "G2", l1, "G1", 201.00, ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1, e3), pi2, pi3);
+        Flight fl5 = new Flight(l2, "G3", l3, "G2", 225.00, ap1, LocalDateTime.of(2022, Month.SEPTEMBER, 6, 17, 0), List.of(e2, e3), pi1, pi4);
         flightRepository.add(fl1);
         flightRepository.add(fl2);
         flightRepository.add(fl3);

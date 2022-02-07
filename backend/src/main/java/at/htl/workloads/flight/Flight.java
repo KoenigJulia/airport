@@ -20,8 +20,10 @@ public class Flight {
     private Long id;
     @ManyToOne
     private Location startDestination;
+    private String startGate;
     @ManyToOne
     private Location endDestination;
+    private String endGate;
     private Double distance;
     @ManyToOne
     private Airplane airplane;
@@ -42,9 +44,11 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, Pilot pilot, Pilot coPilot) {
+    public Flight(Location startDestination, String startGate, Location endDestination, String endGate, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, Pilot pilot, Pilot coPilot) {
         this.startDestination = startDestination;
+        this.startGate = startGate;
         this.endDestination = endDestination;
+        this.endGate = endGate;
         this.distance = distance;
         this.airplane = airplane;
         this.startTime = startTime;
@@ -159,6 +163,21 @@ public class Flight {
         this.seats = seats;
     }
 
+    public String getStartGate() {
+        return startGate;
+    }
+
+    public void setStartGate(String startGate) {
+        this.startGate = startGate;
+    }
+
+    public String getEndGate() {
+        return endGate;
+    }
+
+    public void setEndGate(String endGate) {
+        this.endGate = endGate;
+    }
 
     //endregion
 }
