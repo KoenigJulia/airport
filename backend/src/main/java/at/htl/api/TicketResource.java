@@ -1,6 +1,5 @@
 package at.htl.api;
 
-import at.htl.workloads.bus.Bus;
 import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
 
