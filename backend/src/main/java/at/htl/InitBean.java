@@ -124,21 +124,21 @@ public class InitBean {
         pilotRepository.add(pi4);
 
         // luggage
-        Luggage lu1 = new Luggage(20.00, Size.Medium, "A223");
-        Luggage lu2 = new Luggage(50.00, Size.Large, "Y384");
-        Luggage lu3 = new Luggage(15.67, Size.Medium, "B485");
-        Luggage lu4 = new Luggage(5.89, Size.Small, "U398");
-        Luggage lu5 = new Luggage(2.55, Size.Small, "T485");
-        luggageRepository.add(lu1);
-        luggageRepository.add(lu2);
-        luggageRepository.add(lu3);
-        luggageRepository.add(lu4);
-        luggageRepository.add(lu5);
+//        Luggage lu1 = new Luggage(20.00, Size.Medium, "A223");
+//        Luggage lu2 = new Luggage(50.00, Size.Large, "Y384");
+//        Luggage lu3 = new Luggage(15.67, Size.Medium, "B485");
+//        Luggage lu4 = new Luggage(5.89, Size.Small, "U398");
+//        Luggage lu5 = new Luggage(2.55, Size.Small, "T485");
+//        luggageRepository.add(lu1);
+//        luggageRepository.add(lu2);
+//        luggageRepository.add(lu3);
+//        luggageRepository.add(lu4);
+//        luggageRepository.add(lu5);
 
         // airplane
-        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 20, 8, 10000.00, 300.00);
-        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 80, 10, 10500.00, 250.00);
-        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 100, 8, 11000.00, 200.00);
+        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 20, 8, 10000.00, 300.00, 8, 6);
+        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 80, 10, 10500.00, 250.00, 10, 6);
+        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 100, 8, 11000.00, 200.00, 12, 6);
         airplaneRepository.add(ap1);
         airplaneRepository.add(ap2);
         airplaneRepository.add(ap3);
@@ -158,16 +158,16 @@ public class InitBean {
         flightRepository.add(fl5);
 
         // seat
-        Seat s1 = new Seat(1, "A");
-        Seat s2 = new Seat(3, "A");
-        Seat s3 = new Seat(20, "E");
-        Seat s4 = new Seat(27, "H");
-        Seat s5 = new Seat(16, "F");
-        seatRepository.add(s1);
-        seatRepository.add(s2);
-        seatRepository.add(s3);
-        seatRepository.add(s4);
-        seatRepository.add(s5);
+//        Seat s1 = new Seat(1, "A", seatType);
+//        Seat s2 = new Seat(3, "A", seatType);
+//        Seat s3 = new Seat(20, "E", seatType);
+//        Seat s4 = new Seat(27, "H", seatType);
+//        Seat s5 = new Seat(16, "F", seatType);
+//        seatRepository.add(s1);
+//        seatRepository.add(s2);
+//        seatRepository.add(s3);
+//        seatRepository.add(s4);
+//        seatRepository.add(s5);
 
 //
 //        // ticket
@@ -175,23 +175,25 @@ public class InitBean {
 //        //public Ticket(Flight flight, Person person, Double price, Integer seatNumber, String rowNumber, TravelClass travelclass, List<Luggage> luggage) {
         List<Luggage> luggage = new ArrayList<>();
 
-        luggage.add(lu1);
-        luggage.add(lu2);
-        Ticket t6 = new Ticket(fl5, p4, 2993.83, s1, trC1, luggage);
-        Ticket t3 = new Ticket(fl2, p5, 1500.40, s2, trC1, luggage);
-        luggage.add(lu5);
-        Ticket t4 = new Ticket(fl3, p3, 1020.80, s3, trC2, luggage);
-        Ticket t5 = new Ticket(fl4, p6, 892.46, s4, trC2, luggage);
-        luggage.add(lu3);
-        luggage.add(lu4);
-        Ticket t2 = new Ticket(fl1, p3, 340.77, s5, trC3, luggage);
-        Ticket t1 = new Ticket(fl1, p2, 330.88, s1, trC3, luggage);
-        ticketRepository.add(t1);
-        ticketRepository.add(t2);
-        ticketRepository.add(t3);
-        ticketRepository.add(t4);
-        ticketRepository.add(t5);
-        ticketRepository.add(t6);
+        //TODO refactor tickets with new seat creation
+
+//        luggage.add(lu1);
+//        luggage.add(lu2);
+//        Ticket t6 = new Ticket(fl5, p4, 2993.83, s1, trC1, luggage);
+//        Ticket t3 = new Ticket(fl2, p5, 1500.40, s2, trC1, luggage);
+//        luggage.add(lu5);
+//        Ticket t4 = new Ticket(fl3, p3, 1020.80, s3, trC2, luggage);
+//        Ticket t5 = new Ticket(fl4, p6, 892.46, s4, trC2, luggage);
+//        luggage.add(lu3);
+//        luggage.add(lu4);
+//        Ticket t2 = new Ticket(fl1, p3, 340.77, s5, trC3, luggage);
+//        Ticket t1 = new Ticket(fl1, p2, 330.88, s1, trC3, luggage);
+//        ticketRepository.add(t1);
+//        ticketRepository.add(t2);
+//        ticketRepository.add(t3);
+//        ticketRepository.add(t4);
+//        ticketRepository.add(t5);
+//        ticketRepository.add(t6);
 
     }
 }
