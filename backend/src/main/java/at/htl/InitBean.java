@@ -39,7 +39,6 @@ import javax.transaction.Transactional;
 @ApplicationScoped
 public class InitBean {
     private final AirplaneRepository airplaneRepository;
-    private final BusRepository busRepository;
     private final EmployeeRepository employeeRepository;
     private final FlightRepository flightRepository;
     private final LocationRepository locationRepository;
@@ -52,7 +51,6 @@ public class InitBean {
 
     public InitBean(
             AirplaneRepository airplaneRepository,
-            BusRepository busRepository,
             EmployeeRepository employeeRepository,
             FlightRepository flightRepository,
             LocationRepository locationRepository,
@@ -63,7 +61,6 @@ public class InitBean {
             TravelClassRepository travelclassRepository,
             SeatRepository seatRepository) {
         this.airplaneRepository = airplaneRepository;
-        this.busRepository = busRepository;
         this.employeeRepository = employeeRepository;
         this.flightRepository = flightRepository;
         this.locationRepository = locationRepository;
@@ -85,17 +82,6 @@ public class InitBean {
         travelclassRepository.add(trC1);
         travelclassRepository.add(trC2);
         travelclassRepository.add(trC3);
-
-
-        //bus
-        Bus b1 = new Bus("BMW", 20, 200.00, 140.00);
-        Bus b2 = new Bus("VW", 10, 180.00, 150.00);
-        Bus b3 = new Bus("BMW", 15, 180.00, 120.00);
-        Bus b4 = new Bus("VW", 0, 150.00, 0.0);
-        busRepository.add(b1);
-        busRepository.add(b2);
-        busRepository.add(b3);
-        busRepository.add(b4);
 
         //employee
         Employee e1 = new Employee("Larry", "Remplfarmer", "l.remplfarmer@gmail.com", "06502342533", LocalDate.parse("2001-01-23"), "924351064", "EMP102345", BigDecimal.valueOf(700.00), null, true);
