@@ -2,14 +2,13 @@ package at.htl.api;
 
 import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.airplane.AirplaneRepository;
-import at.htl.workloads.ticket.Ticket;
-import at.htl.workloads.ticket.TicketRepository;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
+@Path("airplane")
 public class AirplaneResource {
     private final AirplaneRepository airplaneRepository;
 
