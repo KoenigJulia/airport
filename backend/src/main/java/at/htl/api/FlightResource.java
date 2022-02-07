@@ -35,6 +35,13 @@ public class FlightResource {
     }
 
     @GET
+    @Path("availableSeats/{flightId}")
+    public Response getAvailableSeats(@QueryParam("flightId") long flightId){
+        var seats = this.flightRepository.getAvailableSeats(flightId);
+        return Response.ok(seats).build();
+    }
+
+    @GET
     @Path("inRange")
     public Response getAllFlights(@QueryParam("startTime") String startTime, @QueryParam("endTime") String endTime) {
         LocalDateTime start = LocalDateTime.parse(startTime, dateTimeFormatter);
