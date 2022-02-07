@@ -1,5 +1,6 @@
 package at.htl.api;
 
+import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.person.Person;
 import at.htl.workloads.person.PersonRepository;
 
@@ -32,6 +33,14 @@ public class PersonResource {
                 ? Response.status(404)
                 : Response.ok(person))
                 .build();
+    }
+
+    @PUT
+    @Transactional
+    @Path("updatePerson")
+    public Response updatePerson(Person updatedPerson, @Context UriInfo uriInfo){
+        this.personRepository.update(updatedPerson);
+        return Response.ok(updatedPerson).build();
     }
 
     @POST

@@ -1,5 +1,6 @@
 package at.htl.api;
 
+import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.pilot.PilotRepository;
 
@@ -33,6 +34,14 @@ public class PilotResource {
                 ? Response.status(404)
                 : Response.ok(pilot))
                 .build();
+    }
+
+    @PUT
+    @Transactional
+    @Path("updatePilot")
+    public Response updatePilot(Pilot updatedPilot, @Context UriInfo uriInfo){
+        this.pilotRepository.update(updatedPilot);
+        return Response.ok(updatedPilot).build();
     }
 
     @POST

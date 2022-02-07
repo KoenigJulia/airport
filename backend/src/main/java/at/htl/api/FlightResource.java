@@ -1,5 +1,6 @@
 package at.htl.api;
 
+import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.flight.Flight;
 import at.htl.workloads.flight.FlightRepository;
 
@@ -33,6 +34,14 @@ public class FlightResource {
                 ? Response.status(404)
                 : Response.ok(flight))
                 .build();
+    }
+
+    @PUT
+    @Transactional
+    @Path("updateFlight")
+    public Response updateFlight(Flight updatedFlight, @Context UriInfo uriInfo){
+        this.flightRepository.update(updatedFlight);
+        return Response.ok(updatedFlight).build();
     }
 
     @POST
