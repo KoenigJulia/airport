@@ -13,12 +13,11 @@ public class Airplane {
     private String airplaneNr;
     private Double fuelCapacity;
     private Double actualFuel;
-    private Integer seatCapacity;
-    private Integer crew;
+    private Integer crewCnt;
     private Double maxHeight;
     private Double maxSpeed;
-    private int rows;
-    private int columns;
+    private int seatRows;
+    private int seatColumns;
 
     //region gettersetter
     public Long getId() {
@@ -53,20 +52,12 @@ public class Airplane {
         this.actualFuel = actualFuel;
     }
 
-    public Integer getSeatCapacity() {
-        return seatCapacity;
+    public Integer getCrewCnt() {
+        return crewCnt;
     }
 
-    public void setSeatCapacity(Integer seatCapacity) {
-        this.seatCapacity = seatCapacity;
-    }
-
-    public Integer getCrew() {
-        return crew;
-    }
-
-    public void setCrew(Integer crew) {
-        this.crew = crew;
+    public void setCrewCnt(Integer crew) {
+        this.crewCnt = crew;
     }
 
     public Double getMaxHeight() {
@@ -85,33 +76,32 @@ public class Airplane {
         this.maxSpeed = maxSpeed;
     }
 
-    public int getRows() {
-        return rows;
+    public int getSeatRows() {
+        return seatRows;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
+    public void setSeatRows(int rows) {
+        this.seatRows = rows;
     }
 
-    public int getColumns() {
-        return columns;
+    public int getSeatColumns() {
+        return seatColumns;
     }
 
-    public void setColumns(int columns) {
-        this.columns = columns;
+    public void setSeatColumns(int columns) {
+        this.seatColumns = columns;
     }
 
     //region Description
-    public Airplane(String airplaneNr, Double fuelCapacity, Double actualFuel, Integer seatCapacity, Integer crew, Double maxHeight, Double maxSpeed, int rows, int colums) {
+    public Airplane(String airplaneNr, Double fuelCapacity, Double actualFuel, Integer crewCnt, Double maxHeight, Double maxSpeed, int seatRows, int seatColumns) {
         this.airplaneNr = airplaneNr;
         this.fuelCapacity = fuelCapacity;
         this.actualFuel = actualFuel;
-        this.seatCapacity = seatCapacity;
-        this.crew = crew;
+        this.crewCnt = crewCnt;
         this.maxHeight = maxHeight;
         this.maxSpeed = maxSpeed;
-        this.rows = rows;
-        this.columns = colums;
+        this.seatRows = seatRows;
+        this.seatColumns = seatColumns;
     }
 
     public Airplane() {
