@@ -10,14 +10,11 @@ import at.htl.workloads.location.Location;
 import at.htl.workloads.location.LocationRepository;
 import at.htl.workloads.luggage.Luggage;
 import at.htl.workloads.luggage.LuggageRepository;
-import at.htl.workloads.luggage.Size;
 import at.htl.workloads.person.Person;
 import at.htl.workloads.person.PersonRepository;
 import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.pilot.PilotRepository;
-import at.htl.workloads.seat.Seat;
 import at.htl.workloads.seat.SeatRepository;
-import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
 import at.htl.workloads.travelclass.TravelClass;
 import at.htl.workloads.travelclass.TravelClassRepository;
@@ -106,9 +103,9 @@ public class InitBean {
         personRepository.add(p6);
 
         // airports
-        Location l1 = new Location("Austria", "Vienna", "Vienna International Airport", "1300 Schwechat", "VIE", "G2");
-        Location l2 = new Location("Austria", "Graz", "Graz Airport", "8073 Feldkirchen bei Graz", "GRZ", "G1");
-        Location l3 = new Location("Austria", "Linz", "Linz Airport", "Flughafenstraße 1, 4063 Hörsching", "LNZ", "G1");
+        Location l1 = new Location("Austria", "Vienna", "Vienna International Airport", "1300 Schwechat", "VIE");
+        Location l2 = new Location("Austria", "Graz", "Graz Airport", "8073 Feldkirchen bei Graz", "GRZ");
+        Location l3 = new Location("Austria", "Linz", "Linz Airport", "Flughafenstraße 1, 4063 Hörsching", "LNZ");
         locationRepository.add(l1);
         locationRepository.add(l2);
         locationRepository.add(l3);
@@ -124,21 +121,21 @@ public class InitBean {
         pilotRepository.add(pi4);
 
         // luggage
-        Luggage lu1 = new Luggage(20.00, Size.Medium, "A223");
-        Luggage lu2 = new Luggage(50.00, Size.Large, "Y384");
-        Luggage lu3 = new Luggage(15.67, Size.Medium, "B485");
-        Luggage lu4 = new Luggage(5.89, Size.Small, "U398");
-        Luggage lu5 = new Luggage(2.55, Size.Small, "T485");
-        luggageRepository.add(lu1);
-        luggageRepository.add(lu2);
-        luggageRepository.add(lu3);
-        luggageRepository.add(lu4);
-        luggageRepository.add(lu5);
+//        Luggage lu1 = new Luggage(20.00, Size.Medium, "A223");
+//        Luggage lu2 = new Luggage(50.00, Size.Large, "Y384");
+//        Luggage lu3 = new Luggage(15.67, Size.Medium, "B485");
+//        Luggage lu4 = new Luggage(5.89, Size.Small, "U398");
+//        Luggage lu5 = new Luggage(2.55, Size.Small, "T485");
+//        luggageRepository.add(lu1);
+//        luggageRepository.add(lu2);
+//        luggageRepository.add(lu3);
+//        luggageRepository.add(lu4);
+//        luggageRepository.add(lu5);
 
         // airplane
-        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 20, 8, 10000.00, 300.00);
-        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 80, 10, 10500.00, 250.00);
-        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 100, 8, 11000.00, 200.00);
+        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 20, 8, 10000.00, 300.00, 8, 6);
+        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 80, 10, 10500.00, 250.00, 10, 6);
+        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 100, 8, 11000.00, 200.00, 12, 6);
         airplaneRepository.add(ap1);
         airplaneRepository.add(ap2);
         airplaneRepository.add(ap3);
@@ -146,11 +143,11 @@ public class InitBean {
         // flight
         //TODO(fields)
         //public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, List<Pilot> pilots) {
-        Flight fl1 = new Flight(l1, l3, 209.00, ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
-        Flight fl2 = new Flight(l2, l1, 201.00, ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), pi2, pi4);
-        Flight fl3 = new Flight(l3, l1, 209.00, ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), pi3, pi1);
-        Flight fl4 = new Flight(l2, l1, 201.00, ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1, e3), pi2, pi3);
-        Flight fl5 = new Flight(l2, l3, 225.00, ap1, LocalDateTime.of(2022, Month.SEPTEMBER, 6, 17, 0), List.of(e2, e3), pi1, pi4);
+        Flight fl1 = new Flight(l1, "G1", l3, "G2", 209.00, ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
+        Flight fl2 = new Flight(l2, "G3", l1, "G6", 201.00, ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), pi2, pi4);
+        Flight fl3 = new Flight(l3, "G1", l1, "G3", 209.00, ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), pi3, pi1);
+        Flight fl4 = new Flight(l2, "G2", l1, "G1", 201.00, ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1, e3), pi2, pi3);
+        Flight fl5 = new Flight(l2, "G3", l3, "G2", 225.00, ap1, LocalDateTime.of(2022, Month.SEPTEMBER, 6, 17, 0), List.of(e2, e3), pi1, pi4);
         flightRepository.add(fl1);
         flightRepository.add(fl2);
         flightRepository.add(fl3);
@@ -158,16 +155,16 @@ public class InitBean {
         flightRepository.add(fl5);
 
         // seat
-        Seat s1 = new Seat(1, "A");
-        Seat s2 = new Seat(3, "A");
-        Seat s3 = new Seat(20, "E");
-        Seat s4 = new Seat(27, "H");
-        Seat s5 = new Seat(16, "F");
-        seatRepository.add(s1);
-        seatRepository.add(s2);
-        seatRepository.add(s3);
-        seatRepository.add(s4);
-        seatRepository.add(s5);
+//        Seat s1 = new Seat(1, "A", seatType);
+//        Seat s2 = new Seat(3, "A", seatType);
+//        Seat s3 = new Seat(20, "E", seatType);
+//        Seat s4 = new Seat(27, "H", seatType);
+//        Seat s5 = new Seat(16, "F", seatType);
+//        seatRepository.add(s1);
+//        seatRepository.add(s2);
+//        seatRepository.add(s3);
+//        seatRepository.add(s4);
+//        seatRepository.add(s5);
 
 //
 //        // ticket
@@ -175,23 +172,25 @@ public class InitBean {
 //        //public Ticket(Flight flight, Person person, Double price, Integer seatNumber, String rowNumber, TravelClass travelclass, List<Luggage> luggage) {
         List<Luggage> luggage = new ArrayList<>();
 
-        luggage.add(lu1);
-        luggage.add(lu2);
-        Ticket t6 = new Ticket(fl5, p4, 2993.83, s1, trC1, luggage);
-        Ticket t3 = new Ticket(fl2, p5, 1500.40, s2, trC1, luggage);
-        luggage.add(lu5);
-        Ticket t4 = new Ticket(fl3, p3, 1020.80, s3, trC2, luggage);
-        Ticket t5 = new Ticket(fl4, p6, 892.46, s4, trC2, luggage);
-        luggage.add(lu3);
-        luggage.add(lu4);
-        Ticket t2 = new Ticket(fl1, p3, 340.77, s5, trC3, luggage);
-        Ticket t1 = new Ticket(fl1, p2, 330.88, s1, trC3, luggage);
-        ticketRepository.add(t1);
-        ticketRepository.add(t2);
-        ticketRepository.add(t3);
-        ticketRepository.add(t4);
-        ticketRepository.add(t5);
-        ticketRepository.add(t6);
+        //TODO refactor tickets with new seat creation
+
+//        luggage.add(lu1);
+//        luggage.add(lu2);
+//        Ticket t6 = new Ticket(fl5, p4, 2993.83, s1, trC1, luggage);
+//        Ticket t3 = new Ticket(fl2, p5, 1500.40, s2, trC1, luggage);
+//        luggage.add(lu5);
+//        Ticket t4 = new Ticket(fl3, p3, 1020.80, s3, trC2, luggage);
+//        Ticket t5 = new Ticket(fl4, p6, 892.46, s4, trC2, luggage);
+//        luggage.add(lu3);
+//        luggage.add(lu4);
+//        Ticket t2 = new Ticket(fl1, p3, 340.77, s5, trC3, luggage);
+//        Ticket t1 = new Ticket(fl1, p2, 330.88, s1, trC3, luggage);
+//        ticketRepository.add(t1);
+//        ticketRepository.add(t2);
+//        ticketRepository.add(t3);
+//        ticketRepository.add(t4);
+//        ticketRepository.add(t5);
+//        ticketRepository.add(t6);
 
     }
 }

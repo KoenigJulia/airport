@@ -1,52 +1,44 @@
 package at.htl.workloads.seat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Seat {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Integer seatNumber;
-    private String rowNumber;
+    @EmbeddedId
+    private SeatId seatId;
+    @Enumerated(EnumType.STRING)
+    private SeatType seatType;
 
     //region constructor
     public Seat() {
     }
 
-    public Seat(Integer seatNumber, String rowNumber) {
-        this.seatNumber = seatNumber;
-        this.rowNumber = rowNumber;
+    public Seat(SeatId seatId, SeatType seatType) {
+        this.seatId = seatId;
+        this.seatType = seatType;
     }
+
     //endregion
 
 
     //region gettersetter
-    public long getId() {
-        return id;
+
+
+    public SeatId getSeatId() {
+        return seatId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setSeatId(SeatId seatId) {
+        this.seatId = seatId;
     }
 
-    public Integer getSeatNumber() {
-        return seatNumber;
+    public SeatType getSeatType() {
+        return seatType;
     }
 
-    public void setSeatNumber(Integer seatNumber) {
-        this.seatNumber = seatNumber;
+    public void setSeatType(SeatType seatType) {
+        this.seatType = seatType;
     }
 
-    public String getRowNumber() {
-        return rowNumber;
-    }
-
-    public void setRowNumber(String rowNumber) {
-        this.rowNumber = rowNumber;
-    }
     //endregion
 }

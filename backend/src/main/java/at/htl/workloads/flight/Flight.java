@@ -3,13 +3,14 @@ package at.htl.workloads.flight;
 import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.employee.Employee;
 import at.htl.workloads.location.Location;
-import at.htl.workloads.person.Person;
 import at.htl.workloads.pilot.Pilot;
-import org.jboss.resteasy.spi.touri.MappedBy;
+import at.htl.workloads.seat.Seat;
+import at.htl.workloads.seat.SeatId;
+import at.htl.workloads.seat.SeatType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,8 +20,10 @@ public class Flight {
     private Long id;
     @ManyToOne
     private Location startDestination;
+    private String startGate;
     @ManyToOne
     private Location endDestination;
+    private String endGate;
     private Double distance;
     @ManyToOne
     private Airplane airplane;
@@ -33,21 +36,49 @@ public class Flight {
 
     private LocalDateTime startTime;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Seat> seats;
+
 
     //region constructor
     public Flight() {
     }
 
-    public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, Pilot pilot, Pilot coPilot) {
+    public Flight(Location startDestination, String startGate, Location endDestination, String endGate, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, Pilot pilot, Pilot coPilot) {
         this.startDestination = startDestination;
+        this.startGate = startGate;
         this.endDestination = endDestination;
+        this.endGate = endGate;
         this.distance = distance;
         this.airplane = airplane;
         this.startTime = startTime;
         this.flightAttendants = flightAttendants;
-//        this.pilots = pilots;
         this.pilot = pilot;
         this.coPilot = coPilot;
+        createSeats();
+    }
+
+    public void createSeats(){
+        seats = new ArrayList<>();
+        int rows = this.getAirplane().getRows();
+        int columns = this.getAirplane().getColumns();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                int seatNumber = i * rows + j + 1;
+                SeatId seatId = new SeatId(seatNumber, this);
+                Seat seat;
+                if(j == 0 || j == getAirplane().getColumns() - 1){
+                    seat = new Seat(seatId, SeatType.WINDOW);
+                }
+                else if(j == columns / 2 - 1 ||  j == columns / 2) {
+                    seat = new Seat(seatId, SeatType.CORRIDOR);
+                }
+                else {
+                    seat = new Seat(seatId, SeatType.MIDDLE);
+                }
+                this.getSeats().add(seat);
+            }
+        }
     }
 
     //endregion
@@ -122,6 +153,30 @@ public class Flight {
 
     public void setCoPilot(Pilot coPilot) {
         this.coPilot = coPilot;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
+    }
+
+    public String getStartGate() {
+        return startGate;
+    }
+
+    public void setStartGate(String startGate) {
+        this.startGate = startGate;
+    }
+
+    public String getEndGate() {
+        return endGate;
+    }
+
+    public void setEndGate(String endGate) {
+        this.endGate = endGate;
     }
 
     //endregion
