@@ -4,7 +4,6 @@ import at.htl.workloads.flight.Flight;
 import at.htl.workloads.flight.FlightRepository;
 
 import javax.annotation.security.RolesAllowed;
-import javax.swing.text.DateFormatter;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
