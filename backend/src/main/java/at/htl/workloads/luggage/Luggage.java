@@ -2,16 +2,24 @@ package at.htl.workloads.luggage;
 
 import at.htl.workloads.ticket.Ticket;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 
 @Entity
 public class Luggage {
+
+    public static final double SIZE_SMALL_PRICE = 10;
+    public static final double SIZE_MEDIUM_PRICE = 50;
+    public static final double SIZE_LARGE_PRICE = 100;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double weight;
     private Size size;
     private String luggageNumber;
+    @JsonbTransient
     @ManyToOne
     @JoinColumn(name = "ticket_id")
     private Ticket ticket;

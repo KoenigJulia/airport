@@ -18,6 +18,7 @@ public class Airplane {
     private Double maxSpeed;
     private int seatRows;
     private int seatColumns;
+    private double defaultTicketPrice;
 
     //region gettersetter
     public Long getId() {
@@ -92,8 +93,16 @@ public class Airplane {
         this.seatColumns = columns;
     }
 
+    public double getDefaultTicketPrice() {
+        return defaultTicketPrice;
+    }
+
+    public void setDefaultTicketPrice(double defaultTicketPrice) {
+        this.defaultTicketPrice = defaultTicketPrice;
+    }
+
     //region Description
-    public Airplane(String airplaneNr, Double fuelCapacity, Double actualFuel, Integer crewCnt, Double maxHeight, Double maxSpeed, int seatRows, int seatColumns) {
+    public Airplane(String airplaneNr, Double fuelCapacity, Double actualFuel, Integer crewCnt, Double maxHeight, Double maxSpeed, int seatRows, int seatColumns, double defaultTicketPrice) {
         this.airplaneNr = airplaneNr;
         this.fuelCapacity = fuelCapacity;
         this.actualFuel = actualFuel;
@@ -102,6 +111,7 @@ public class Airplane {
         this.maxSpeed = maxSpeed;
         this.seatRows = seatRows;
         this.seatColumns = seatColumns;
+        this.defaultTicketPrice = defaultTicketPrice;
     }
 
     public Airplane() {

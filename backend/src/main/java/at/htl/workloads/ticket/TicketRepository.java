@@ -2,7 +2,6 @@ package at.htl.workloads.ticket;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -14,11 +13,6 @@ public class TicketRepository {
     }
 
     public void add(Ticket ticket){
-        if(ticket.getTravelclass().getMaxLuggage() > ticket.getLugagge().size()){
-            System.out.println("Ticket invalid (too many luggage)");
-            return;
-        }
-
         this.em.persist(ticket);
     }
 

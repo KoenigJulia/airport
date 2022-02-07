@@ -18,26 +18,27 @@ public class Ticket {
     private Flight flight;
     @ManyToOne
     private Person person;
-    private Double price;
+    private double price;
     @ManyToOne
     private Seat seat;
     @ManyToOne
     private TravelClass travelclass;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ticket")
-    private List<Luggage> lugagge;
+    private List<Luggage> luggage;
 
     //region constructor
     public Ticket() {
     }
-    public Ticket(Flight flight, Person person, Double price, Seat seat, TravelClass travelclass,
+    public Ticket(Flight flight, Person person, double price, Seat seat, TravelClass travelclass,
                   List<Luggage> luggage) {
         this.flight = flight;
         this.person = person;
         this.price = price;
         this.seat = seat;
         this.travelclass = travelclass;
-        this.lugagge = luggage;
+        this.luggage = luggage;
     }
+
     //endregion
     //region gettersetter
     public Long getId() {
@@ -79,11 +80,11 @@ public class Ticket {
     public void setTravelclass(TravelClass travelclass) {
         this.travelclass = travelclass;
     }
-    public List<Luggage> getLugagge() {
-        return lugagge;
+    public List<Luggage> getLuggage() {
+        return luggage;
     }
-    public void setLugagge(List<Luggage> lugagge) {
-        this.lugagge = lugagge;
+    public void setLuggage(List<Luggage> lugagge) {
+        this.luggage = lugagge;
     }
 //endregion
 }

@@ -3,10 +3,15 @@ package at.htl.workloads.flight;
 import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.employee.Employee;
 import at.htl.workloads.location.Location;
+import at.htl.workloads.luggage.Luggage;
+import at.htl.workloads.luggage.Size;
+import at.htl.workloads.person.Person;
 import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.seat.Seat;
 import at.htl.workloads.seat.SeatId;
 import at.htl.workloads.seat.SeatType;
+import at.htl.workloads.ticket.Ticket;
+import at.htl.workloads.travelclass.TravelClass;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -59,7 +64,35 @@ public class Flight {
         createSeats();
     }
 
-    public void createSeats(){
+
+    public Seat getSeatBySeatNumber(int seatNumber) {
+        return this.getSeats().stream()
+                .filter(s -> s.getSeatId().getSeatNumber() == seatNumber)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Ticket bookFlight(Person person, TravelClass travelClass, int seatNumber, List<Luggage> luggage) {
+        Seat seat = getSeatBySeatNumber(seatNumber);
+        if (seat == null) return null;
+        this.getSeats().remove(seat);
+
+        double price = this.getAirplane().getDefaultTicketPrice();
+        price += travelClass.getPrice();
+        for (var l : luggage) {
+            if (l.getSize() == Size.Small) {
+                price += Luggage.SIZE_SMALL_PRICE;
+            } else if (l.getSize() == Size.Medium) {
+                price += Luggage.SIZE_MEDIUM_PRICE;
+            } else if (l.getSize() == Size.Large) {
+                price += Luggage.SIZE_LARGE_PRICE;
+            }
+        }
+        Ticket ticket = new Ticket(this, person, price, seat, travelClass, luggage);
+        return ticket;
+    }
+
+    public void createSeats() {
         seats = new ArrayList<>();
         int rows = this.getAirplane().getSeatRows();
         int columns = this.getAirplane().getSeatColumns();
@@ -68,13 +101,11 @@ public class Flight {
                 int seatNumber = i * rows + j + 1;
                 SeatId seatId = new SeatId(seatNumber, this);
                 Seat seat;
-                if(j == 0 || j == getAirplane().getSeatColumns() - 1){
+                if (j == 0 || j == getAirplane().getSeatColumns() - 1) {
                     seat = new Seat(seatId, SeatType.WINDOW);
-                }
-                else if(j == columns / 2 - 1 ||  j == columns / 2) {
+                } else if (j == columns / 2 - 1 || j == columns / 2) {
                     seat = new Seat(seatId, SeatType.CORRIDOR);
-                }
-                else {
+                } else {
                     seat = new Seat(seatId, SeatType.MIDDLE);
                 }
                 this.getSeats().add(seat);
