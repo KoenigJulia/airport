@@ -38,7 +38,7 @@ public class EmployeeRepository {
                 .getResultList();
     }
 
-    public Employee deleteEmployee(Long id){
+    public Employee removeEmployee(Long id){
         Employee employee = this.em.find(Employee.class,id);
         this.em.remove(employee);
         return employee;

@@ -41,7 +41,7 @@ public class TicketRepository {
                 .getResultList();
     }
 
-    public Ticket deleteTicket(Long id){
+    public Ticket removeTicket(Long id){
         Ticket ticket = this.em.find(Ticket.class,id);
         this.em.remove(ticket);
         return ticket;

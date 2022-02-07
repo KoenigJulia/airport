@@ -2,13 +2,13 @@ package at.htl.api;
 
 import at.htl.workloads.luggage.Luggage;
 import at.htl.workloads.luggage.LuggageRepository;
-import at.htl.workloads.ticket.Ticket;
-import at.htl.workloads.ticket.TicketRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+
 @Path("luggage")
 public class LuggageResource {
     private final LuggageRepository luggageRepository;
@@ -34,4 +34,24 @@ public class LuggageResource {
                 : Response.ok(luggage))
                 .build();
     }
+
+    @POST
+    @Transactional
+    @Path("addLuggage")
+    public Response addLuggage(Luggage newLuggage, @Context UriInfo uriInfo){
+        this.luggageRepository.add(newLuggage);
+        return Response.ok(newLuggage).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response removeLuggage(@PathParam("id") Long id){
+        Luggage luggage = this.luggageRepository.removeLuggage(id);
+        return (luggage == null
+                ? Response.status(404)
+                : Response.ok(luggage))
+                .build();
+    }
+
 }

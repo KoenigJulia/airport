@@ -36,7 +36,7 @@ public class LocationRepository {
                 .getResultList();
     }
 
-    public Location deleteLocation(Long id){
+    public Location removeLocation(Long id){
         Location location = this.em.find(Location.class,id);
         this.em.remove(location);
         return location;

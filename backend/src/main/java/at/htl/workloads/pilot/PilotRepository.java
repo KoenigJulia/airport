@@ -36,7 +36,7 @@ public class PilotRepository {
                 .getResultList();
     }
 
-    public Pilot deletePilot(Long id){
+    public Pilot removePilot(Long id){
         Pilot pilot = this.em.find(Pilot.class,id);
         this.em.remove(pilot);
         return pilot;

@@ -2,13 +2,12 @@ package at.htl.api;
 
 import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.airplane.AirplaneRepository;
-import at.htl.workloads.ticket.Ticket;
-import at.htl.workloads.ticket.TicketRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 public class AirplaneResource {
     private final AirplaneRepository airplaneRepository;
@@ -34,4 +33,22 @@ public class AirplaneResource {
                 .build();
     }
 
+    @POST
+    @Transactional
+    @Path("addAirplane")
+    public Response addAirplane(Airplane newAirplane, @Context UriInfo uriInfo){
+        this.airplaneRepository.add(newAirplane);
+        return Response.ok(newAirplane).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response removeAirplane(@PathParam("id") Long id){
+        Airplane airplane = this.airplaneRepository.removeAirplane(id);
+        return (airplane == null
+                ? Response.status(404)
+                : Response.ok(airplane))
+                .build();
+    }
 }

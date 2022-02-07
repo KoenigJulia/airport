@@ -2,13 +2,12 @@ package at.htl.api;
 
 import at.htl.workloads.location.Location;
 import at.htl.workloads.location.LocationRepository;
-import at.htl.workloads.ticket.Ticket;
-import at.htl.workloads.ticket.TicketRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 @Path("location")
 public class LocationResource {
@@ -36,4 +35,22 @@ public class LocationResource {
                 .build();
     }
 
+    @POST
+    @Transactional
+    @Path("addLocation")
+    public Response addLocation(Location newLocation, @Context UriInfo uriInfo){
+        this.locationRepository.add(newLocation);
+        return Response.ok(newLocation).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response removeLocation(@PathParam("id") Long id){
+        Location location = this.locationRepository.removeLocation(id);
+        return (location == null
+                ? Response.status(404)
+                : Response.ok(location))
+                .build();
+    }
 }

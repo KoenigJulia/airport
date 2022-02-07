@@ -35,7 +35,7 @@ public class TravelClassRepository {
                 .getResultList();
     }
 
-    public TravelClass deleteTravelClass(Long id){
+    public TravelClass removeTravelClass(Long id){
         TravelClass travelClass = this.em.find(TravelClass.class,id);
         this.em.remove(travelClass);
         return travelClass;

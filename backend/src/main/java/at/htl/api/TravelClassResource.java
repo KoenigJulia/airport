@@ -1,14 +1,13 @@
 package at.htl.api;
 
-import at.htl.workloads.ticket.Ticket;
-import at.htl.workloads.ticket.TicketRepository;
 import at.htl.workloads.travelclass.TravelClass;
 import at.htl.workloads.travelclass.TravelClassRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 @Path("travelclass")
 public class TravelClassResource {
@@ -35,5 +34,25 @@ public class TravelClassResource {
                 : Response.ok(travelClass))
                 .build();
     }
+
+    @POST
+    @Transactional
+    @Path("addTravelClass")
+    public Response addTravelClass(TravelClass newTravelClass, @Context UriInfo uriInfo){
+        this.travelClassRepository.add(newTravelClass);
+        return Response.ok(newTravelClass).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response removeTravelClass(@PathParam("id") Long id){
+        TravelClass travelClass = this.travelClassRepository.removeTravelClass(id);
+        return (travelClass == null
+                ? Response.status(404)
+                : Response.ok(travelClass))
+                .build();
+    }
+
 
 }
