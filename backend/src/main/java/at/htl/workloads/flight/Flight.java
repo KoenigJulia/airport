@@ -60,14 +60,14 @@ public class Flight {
 
     public void createSeats(){
         seats = new ArrayList<>();
-        int rows = this.getAirplane().getRows();
-        int columns = this.getAirplane().getColumns();
+        int rows = this.getAirplane().getSeatRows();
+        int columns = this.getAirplane().getSeatColumns();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 int seatNumber = i * rows + j + 1;
                 SeatId seatId = new SeatId(seatNumber, this);
                 Seat seat;
-                if(j == 0 || j == getAirplane().getColumns() - 1){
+                if(j == 0 || j == getAirplane().getSeatColumns() - 1){
                     seat = new Seat(seatId, SeatType.WINDOW);
                 }
                 else if(j == columns / 2 - 1 ||  j == columns / 2) {

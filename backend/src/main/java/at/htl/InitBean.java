@@ -133,9 +133,9 @@ public class InitBean {
 //        luggageRepository.add(lu5);
 
         // airplane
-        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 20, 8, 10000.00, 300.00, 8, 6);
-        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 80, 10, 10500.00, 250.00, 10, 6);
-        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 100, 8, 11000.00, 200.00, 12, 6);
+        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 4, 10000.00, 300.00, 8, 6);
+        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 4, 10500.00, 250.00, 10, 6);
+        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 6, 11000.00, 200.00, 12, 6);
         airplaneRepository.add(ap1);
         airplaneRepository.add(ap2);
         airplaneRepository.add(ap3);
