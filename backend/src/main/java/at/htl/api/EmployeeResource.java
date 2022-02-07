@@ -1,5 +1,6 @@
 package at.htl.api;
 
+import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.employee.Employee;
 import at.htl.workloads.employee.EmployeeRepository;
 
@@ -32,6 +33,14 @@ public class EmployeeResource {
                 ? Response.status(404)
                 : Response.ok(employee))
                 .build();
+    }
+
+    @PUT
+    @Transactional
+    @Path("updateEmployee")
+    public Response updateEmployee(Employee updatedEmployee, @Context UriInfo uriInfo){
+        this.employeeRepository.update(updatedEmployee);
+        return Response.ok(updatedEmployee).build();
     }
 
     @POST

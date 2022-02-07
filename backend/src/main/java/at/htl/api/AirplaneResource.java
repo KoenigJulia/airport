@@ -33,6 +33,14 @@ public class AirplaneResource {
                 .build();
     }
 
+    @PUT
+    @Transactional
+    @Path("updateAirplane")
+    public Response updateAirplane(Airplane updatedAirplane, @Context UriInfo uriInfo){
+        this.airplaneRepository.update(updatedAirplane);
+        return Response.ok(updatedAirplane).build();
+    }
+
     @POST
     @Transactional
     @Path("addAirplane")

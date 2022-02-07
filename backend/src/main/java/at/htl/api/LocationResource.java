@@ -1,5 +1,6 @@
 package at.htl.api;
 
+import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.location.Location;
 import at.htl.workloads.location.LocationRepository;
 
@@ -33,6 +34,14 @@ public class LocationResource {
                 ? Response.status(404)
                 : Response.ok(location))
                 .build();
+    }
+
+    @PUT
+    @Transactional
+    @Path("updateLocation")
+    public Response updateLocation(Location updatedLocation, @Context UriInfo uriInfo){
+        this.locationRepository.update(updatedLocation);
+        return Response.ok(updatedLocation).build();
     }
 
     @POST

@@ -1,5 +1,6 @@
 package at.htl.api;
 
+import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
 
@@ -33,6 +34,14 @@ public class TicketResource {
                 ? Response.status(404)
                 : Response.ok(ticket))
                 .build();
+    }
+
+    @PUT
+    @Transactional
+    @Path("updateTicket")
+    public Response updateTicket(Ticket updatedTicket, @Context UriInfo uriInfo){
+        this.ticketRepository.update(updatedTicket);
+        return Response.ok(updatedTicket).build();
     }
 
     @POST

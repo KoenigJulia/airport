@@ -1,5 +1,6 @@
 package at.htl.api;
 
+import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.luggage.Luggage;
 import at.htl.workloads.luggage.LuggageRepository;
 
@@ -33,6 +34,14 @@ public class LuggageResource {
                 ? Response.status(404)
                 : Response.ok(luggage))
                 .build();
+    }
+
+    @PUT
+    @Transactional
+    @Path("updateLuggage")
+    public Response updateLuggage(Luggage updatedLuggage, @Context UriInfo uriInfo){
+        this.luggageRepository.update(updatedLuggage);
+        return Response.ok(updatedLuggage).build();
     }
 
     @POST
