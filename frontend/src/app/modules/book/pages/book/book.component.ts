@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Flight} from "../../../../shared/models/flight.model";
-import {BackendApiServiceService} from "../../../../core/services/backend-api-service.service";
+import {BackendApiService} from "../../../../core/services/backend-api.service";
 
 @Component({
   selector: 'app-book',
@@ -9,7 +9,7 @@ import {BackendApiServiceService} from "../../../../core/services/backend-api-se
 export class BookComponent implements OnInit {
   flights: Flight[] | undefined;
 
-  constructor(private backendApiService: BackendApiServiceService) { }
+  constructor(private backendApiService: BackendApiService) { }
 
   ngOnInit(): void {
     this.backendApiService.getFlights().subscribe(f => {

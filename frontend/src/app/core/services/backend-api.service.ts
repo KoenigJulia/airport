@@ -7,7 +7,7 @@ import {environment} from "../../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class BackendApiServiceService {
+export class BackendApiService {
 
   constructor(private http: HttpClient) { }
 
