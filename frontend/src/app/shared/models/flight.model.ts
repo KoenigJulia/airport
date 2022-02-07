@@ -8,13 +8,14 @@ export interface Flight {
   airplane: Airplane;
   coPilot: Pilot;
   distance: number;
-  endDestination: Location;
-  endGate: string;
+  arrivalDestination: Location;
+  arrivalTime: Date;
+  arrivalGate: string;
   flightAttendants: Attendant[];
   id: number;
   pilot: Pilot;
   seats: Seat[];
-  startDestination: Location;
-  startGate: string;
-  startTime: Date;
+  departureDestination: Location;
+  departureGate: string;
+  departureTime: Date;
 }
