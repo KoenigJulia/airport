@@ -2,8 +2,6 @@ package at.htl;
 
 import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.airplane.AirplaneRepository;
-import at.htl.workloads.bus.Bus;
-import at.htl.workloads.bus.BusRepository;
 import at.htl.workloads.employee.Employee;
 import at.htl.workloads.employee.EmployeeRepository;
 import at.htl.workloads.flight.Flight;
