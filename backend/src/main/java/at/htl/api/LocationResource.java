@@ -1,16 +1,18 @@
 package at.htl.api;
 
-import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.location.Location;
 import at.htl.workloads.location.LocationRepository;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 @Path("location")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class LocationResource {
     private final LocationRepository locationRepository;
 
@@ -39,7 +41,7 @@ public class LocationResource {
     @PUT
     @Transactional
     @Path("updateLocation")
-    public Response updateLocation(Location updatedLocation, @Context UriInfo uriInfo){
+    public Response updateLocation(Location updatedLocation, @Context UriInfo uriInfo) {
         this.locationRepository.update(updatedLocation);
         return Response.ok(updatedLocation).build();
     }
@@ -47,7 +49,7 @@ public class LocationResource {
     @POST
     @Transactional
     @Path("addLocation")
-    public Response addLocation(Location newLocation, @Context UriInfo uriInfo){
+    public Response addLocation(Location newLocation, @Context UriInfo uriInfo) {
         this.locationRepository.add(newLocation);
         return Response.ok(newLocation).build();
     }
@@ -55,7 +57,7 @@ public class LocationResource {
     @DELETE
     @Path("{id}")
     @Transactional
-    public Response removeLocation(@PathParam("id") Long id){
+    public Response removeLocation(@PathParam("id") Long id) {
         Location location = this.locationRepository.removeLocation(id);
         return (location == null
                 ? Response.status(404)

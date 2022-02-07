@@ -1,16 +1,18 @@
 package at.htl.api;
 
-import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.pilot.PilotRepository;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 @Path("pilot")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class PilotResource {
     private final PilotRepository pilotRepository;
 
@@ -39,7 +41,7 @@ public class PilotResource {
     @PUT
     @Transactional
     @Path("updatePilot")
-    public Response updatePilot(Pilot updatedPilot, @Context UriInfo uriInfo){
+    public Response updatePilot(Pilot updatedPilot, @Context UriInfo uriInfo) {
         this.pilotRepository.update(updatedPilot);
         return Response.ok(updatedPilot).build();
     }
@@ -47,7 +49,7 @@ public class PilotResource {
     @POST
     @Transactional
     @Path("addPilot")
-    public Response addPilot(Pilot newPilot, @Context UriInfo uriInfo){
+    public Response addPilot(Pilot newPilot, @Context UriInfo uriInfo) {
         this.pilotRepository.add(newPilot);
         return Response.ok(newPilot).build();
     }
@@ -55,7 +57,7 @@ public class PilotResource {
     @DELETE
     @Path("{id}")
     @Transactional
-    public Response removePilot(@PathParam("id") Long id){
+    public Response removePilot(@PathParam("id") Long id) {
         Pilot pilot = this.pilotRepository.removePilot(id);
         return (pilot == null
                 ? Response.status(404)

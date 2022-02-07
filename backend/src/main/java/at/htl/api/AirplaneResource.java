@@ -6,10 +6,13 @@ import at.htl.workloads.airplane.AirplaneRepository;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 @Path("airplane")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class AirplaneResource {
     private final AirplaneRepository airplaneRepository;
 
@@ -37,7 +40,7 @@ public class AirplaneResource {
     @PUT
     @Transactional
     @Path("updateAirplane")
-    public Response updateAirplane(Airplane updatedAirplane, @Context UriInfo uriInfo){
+    public Response updateAirplane(Airplane updatedAirplane, @Context UriInfo uriInfo) {
         this.airplaneRepository.update(updatedAirplane);
         return Response.ok(updatedAirplane).build();
     }
@@ -45,7 +48,7 @@ public class AirplaneResource {
     @POST
     @Transactional
     @Path("addAirplane")
-    public Response addAirplane(Airplane newAirplane, @Context UriInfo uriInfo){
+    public Response addAirplane(Airplane newAirplane, @Context UriInfo uriInfo) {
         this.airplaneRepository.add(newAirplane);
         return Response.ok(newAirplane).build();
     }
@@ -53,7 +56,7 @@ public class AirplaneResource {
     @DELETE
     @Path("{id}")
     @Transactional
-    public Response removeAirplane(@PathParam("id") Long id){
+    public Response removeAirplane(@PathParam("id") Long id) {
         Airplane airplane = this.airplaneRepository.removeAirplane(id);
         return (airplane == null
                 ? Response.status(404)

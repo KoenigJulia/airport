@@ -1,16 +1,18 @@
 package at.htl.api;
 
-import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 @Path("ticket")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class TicketResource {
     private final TicketRepository ticketRepository;
 
@@ -39,7 +41,7 @@ public class TicketResource {
     @PUT
     @Transactional
     @Path("updateTicket")
-    public Response updateTicket(Ticket updatedTicket, @Context UriInfo uriInfo){
+    public Response updateTicket(Ticket updatedTicket, @Context UriInfo uriInfo) {
         this.ticketRepository.update(updatedTicket);
         return Response.ok(updatedTicket).build();
     }
@@ -47,7 +49,7 @@ public class TicketResource {
     @POST
     @Transactional
     @Path("addTicket")
-    public Response addTicket(Ticket newTicket, @Context UriInfo uriInfo){
+    public Response addTicket(Ticket newTicket, @Context UriInfo uriInfo) {
         this.ticketRepository.add(newTicket);
         return Response.ok(newTicket).build();
     }
@@ -55,7 +57,7 @@ public class TicketResource {
     @DELETE
     @Path("{id}")
     @Transactional
-    public Response removeTicket(@PathParam("id") Long id){
+    public Response removeTicket(@PathParam("id") Long id) {
         Ticket ticket = this.ticketRepository.removeTicket(id);
         return (ticket == null
                 ? Response.status(404)

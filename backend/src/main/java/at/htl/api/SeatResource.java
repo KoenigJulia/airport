@@ -4,9 +4,12 @@ import at.htl.workloads.seat.Seat;
 import at.htl.workloads.seat.SeatRepository;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("seat")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class SeatResource {
     private final SeatRepository seatRepository;
 

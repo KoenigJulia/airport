@@ -1,16 +1,18 @@
 package at.htl.api;
 
-import at.htl.workloads.airplane.Airplane;
 import at.htl.workloads.employee.Employee;
 import at.htl.workloads.employee.EmployeeRepository;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 @Path("employee")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class EmployeeResource {
     private final EmployeeRepository employeeRepository;
 
@@ -38,7 +40,7 @@ public class EmployeeResource {
     @PUT
     @Transactional
     @Path("updateEmployee")
-    public Response updateEmployee(Employee updatedEmployee, @Context UriInfo uriInfo){
+    public Response updateEmployee(Employee updatedEmployee, @Context UriInfo uriInfo) {
         this.employeeRepository.update(updatedEmployee);
         return Response.ok(updatedEmployee).build();
     }
@@ -46,7 +48,7 @@ public class EmployeeResource {
     @POST
     @Transactional
     @Path("addEmployee")
-    public Response addEmployee(Employee newEmployee, @Context UriInfo uriInfo){
+    public Response addEmployee(Employee newEmployee, @Context UriInfo uriInfo) {
         this.employeeRepository.add(newEmployee);
         return Response.ok(newEmployee).build();
     }
@@ -54,7 +56,7 @@ public class EmployeeResource {
     @DELETE
     @Path("{id}")
     @Transactional
-    public Response removeEmployee(@PathParam("id") Long id){
+    public Response removeEmployee(@PathParam("id") Long id) {
         Employee employee = this.employeeRepository.removeEmployee(id);
         return (employee == null
                 ? Response.status(404)
