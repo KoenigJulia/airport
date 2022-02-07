@@ -143,11 +143,11 @@ public class InitBean {
         // flight
         //TODO(fields)
         //public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, List<Pilot> pilots) {
-        Flight fl1 = new Flight(l1, "G1", l3, "G2", 209.00, ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
-        Flight fl2 = new Flight(l2, "G3", l1, "G6", 201.00, ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), pi2, pi4);
-        Flight fl3 = new Flight(l3, "G1", l1, "G3", 209.00, ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), pi3, pi1);
-        Flight fl4 = new Flight(l2, "G2", l1, "G1", 201.00, ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1, e3), pi2, pi3);
-        Flight fl5 = new Flight(l2, "G3", l3, "G2", 225.00, ap1, LocalDateTime.of(2022, Month.SEPTEMBER, 6, 17, 0), List.of(e2, e3), pi1, pi4);
+        Flight fl1 = new Flight(l1, "G1", LocalDateTime.of(2022, Month.JANUARY, 20, 16, 30), l3, "G2", 209.00, ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
+        Flight fl2 = new Flight(l2, "G3", LocalDateTime.of(2021, Month.DECEMBER, 24, 4, 15), l1, "G6", 201.00, ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), pi2, pi4);
+        Flight fl3 = new Flight(l3, "G1", LocalDateTime.of(2022, Month.FEBRUARY, 3, 12, 45), l1, "G3", 209.00, ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), pi3, pi1);
+        Flight fl4 = new Flight(l2, "G2", LocalDateTime.of(2021, Month.JANUARY, 30, 2, 15), l1, "G1", 201.00, ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1, e3), pi2, pi3);
+        Flight fl5 = new Flight(l2, "G3", LocalDateTime.of(2022, Month.SEPTEMBER, 6, 13, 0), l3, "G2", 225.00, ap1, LocalDateTime.of(2022, Month.SEPTEMBER, 6, 17, 0), List.of(e2, e3), pi1, pi4);
         flightRepository.add(fl1);
         flightRepository.add(fl2);
         flightRepository.add(fl3);

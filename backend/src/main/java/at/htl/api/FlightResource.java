@@ -3,10 +3,11 @@ package at.htl.api;
 import at.htl.workloads.flight.Flight;
 import at.htl.workloads.flight.FlightRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 @Path("flight")
 public class FlightResource {
@@ -33,4 +34,24 @@ public class FlightResource {
                 : Response.ok(flight))
                 .build();
     }
+
+    @POST
+    @Transactional
+    @Path("addFlight")
+    public Response addFlight(Flight newFlight, @Context UriInfo uriInfo){
+        this.flightRepository.add(newFlight);
+        return Response.ok(newFlight).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response removeFlight(@PathParam("id") Long id){
+        Flight flight = this.flightRepository.removeFlight(id);
+        return (flight == null
+                ? Response.status(404)
+                : Response.ok(flight))
+                .build();
+    }
+
 }

@@ -3,10 +3,11 @@ package at.htl.api;
 import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 @Path("ticket")
 public class TicketResource {
@@ -33,4 +34,24 @@ public class TicketResource {
                 : Response.ok(ticket))
                 .build();
     }
+
+    @POST
+    @Transactional
+    @Path("addTicket")
+    public Response addTicket(Ticket newTicket, @Context UriInfo uriInfo){
+        this.ticketRepository.add(newTicket);
+        return Response.ok(newTicket).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response removeTicket(@PathParam("id") Long id){
+        Ticket ticket = this.ticketRepository.removeTicket(id);
+        return (ticket == null
+                ? Response.status(404)
+                : Response.ok(ticket))
+                .build();
+    }
+
 }

@@ -19,11 +19,13 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Location startDestination;
-    private String startGate;
+    private Location departureDestination;
+    private String departureGate;
+    private LocalDateTime departureTime;
     @ManyToOne
-    private Location endDestination;
-    private String endGate;
+    private Location arrivalDestination;
+    private String arrivalGate;
+    private LocalDateTime arrivalTime;
     private Double distance;
     @ManyToOne
     private Airplane airplane;
@@ -34,8 +36,6 @@ public class Flight {
     @ManyToOne
     private Pilot coPilot;
 
-    private LocalDateTime startTime;
-
     @OneToMany(cascade = CascadeType.ALL)
     private List<Seat> seats;
 
@@ -44,14 +44,15 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Location startDestination, String startGate, Location endDestination, String endGate, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, Pilot pilot, Pilot coPilot) {
-        this.startDestination = startDestination;
-        this.startGate = startGate;
-        this.endDestination = endDestination;
-        this.endGate = endGate;
+    public Flight(Location startDestination, String startGate, LocalDateTime depatureTime, Location arrivalDestination, String arrivalGate, Double distance, Airplane airplane, LocalDateTime arrivalTime, List<Employee> flightAttendants, Pilot pilot, Pilot coPilot) {
+        this.departureDestination = startDestination;
+        this.departureGate = startGate;
+        this.departureTime = depatureTime;
+        this.arrivalDestination = arrivalDestination;
+        this.arrivalGate = arrivalGate;
+        this.arrivalTime = arrivalTime;
         this.distance = distance;
         this.airplane = airplane;
-        this.startTime = startTime;
         this.flightAttendants = flightAttendants;
         this.pilot = pilot;
         this.coPilot = coPilot;
@@ -91,20 +92,20 @@ public class Flight {
         this.id = id;
     }
 
-    public Location getStartDestination() {
-        return startDestination;
+    public Location getDepartureDestination() {
+        return departureDestination;
     }
 
-    public void setStartDestination(Location startDestination) {
-        this.startDestination = startDestination;
+    public void setDepartureDestination(Location startDestination) {
+        this.departureDestination = startDestination;
     }
 
-    public Location getEndDestination() {
-        return endDestination;
+    public Location getArrivalDestination() {
+        return arrivalDestination;
     }
 
-    public void setEndDestination(Location endDestination) {
-        this.endDestination = endDestination;
+    public void setArrivalDestination(Location endDestination) {
+        this.arrivalDestination = endDestination;
     }
 
     public Double getDistance() {
@@ -123,12 +124,12 @@ public class Flight {
         this.airplane = airplane;
     }
 
-    public LocalDateTime getStartTime() {
-        return startTime;
+    public LocalDateTime getArrivalTime() {
+        return arrivalTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+    public void setArrivalTime(LocalDateTime startTime) {
+        this.arrivalTime = startTime;
     }
 
     public List<Employee> getFlightAttendants() {
@@ -163,20 +164,28 @@ public class Flight {
         this.seats = seats;
     }
 
-    public String getStartGate() {
-        return startGate;
+    public String getDepartureGate() {
+        return departureGate;
     }
 
-    public void setStartGate(String startGate) {
-        this.startGate = startGate;
+    public void setDepartureGate(String startGate) {
+        this.departureGate = startGate;
     }
 
-    public String getEndGate() {
-        return endGate;
+    public String getArrivalGate() {
+        return arrivalGate;
     }
 
-    public void setEndGate(String endGate) {
-        this.endGate = endGate;
+    public void setArrivalGate(String endGate) {
+        this.arrivalGate = endGate;
+    }
+
+    public LocalDateTime getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(LocalDateTime departureTime) {
+        this.departureTime = departureTime;
     }
 
     //endregion

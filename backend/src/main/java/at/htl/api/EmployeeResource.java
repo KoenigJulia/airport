@@ -3,10 +3,11 @@ package at.htl.api;
 import at.htl.workloads.employee.Employee;
 import at.htl.workloads.employee.EmployeeRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 @Path("employee")
 public class EmployeeResource {
@@ -32,4 +33,24 @@ public class EmployeeResource {
                 : Response.ok(employee))
                 .build();
     }
+
+    @POST
+    @Transactional
+    @Path("addEmployee")
+    public Response addEmployee(Employee newEmployee, @Context UriInfo uriInfo){
+        this.employeeRepository.add(newEmployee);
+        return Response.ok(newEmployee).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response removeEmployee(@PathParam("id") Long id){
+        Employee employee = this.employeeRepository.removeEmployee(id);
+        return (employee == null
+                ? Response.status(404)
+                : Response.ok(employee))
+                .build();
+    }
+
 }

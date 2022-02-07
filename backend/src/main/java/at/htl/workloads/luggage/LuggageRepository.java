@@ -36,7 +36,7 @@ public class LuggageRepository {
                 .getResultList();
     }
 
-    public Luggage deleteLuggage(Long id){
+    public Luggage removeLuggage(Long id){
         Luggage luggage = this.em.find(Luggage.class,id);
         this.em.remove(luggage);
         return luggage;

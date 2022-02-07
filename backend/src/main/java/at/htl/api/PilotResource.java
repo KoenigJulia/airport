@@ -2,13 +2,13 @@ package at.htl.api;
 
 import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.pilot.PilotRepository;
-import at.htl.workloads.ticket.Ticket;
-import at.htl.workloads.ticket.TicketRepository;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.transaction.Transactional;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+
 @Path("pilot")
 public class PilotResource {
     private final PilotRepository pilotRepository;
@@ -35,4 +35,22 @@ public class PilotResource {
                 .build();
     }
 
+    @POST
+    @Transactional
+    @Path("addPilot")
+    public Response addPilot(Pilot newPilot, @Context UriInfo uriInfo){
+        this.pilotRepository.add(newPilot);
+        return Response.ok(newPilot).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Transactional
+    public Response removePilot(@PathParam("id") Long id){
+        Pilot pilot = this.pilotRepository.removePilot(id);
+        return (pilot == null
+                ? Response.status(404)
+                : Response.ok(pilot))
+                .build();
+    }
 }
