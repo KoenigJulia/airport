@@ -24,7 +24,6 @@ public class Person {
     @JsonbTransient
     @Password
     public String password;
-    @JsonbTransient
     @Roles
     public String role;
     private String phoneNumber;
