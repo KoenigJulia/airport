@@ -12,8 +12,7 @@ public class TravelClass {
     private boolean legroom;
     private boolean entertainment;
     private boolean cabinLuggage;
-    private int maxLuggage;
-
+    private int maxLuggage; // ? to remove
     //region constructor
     public TravelClass(String name, Double price, boolean legroom, boolean entertainment, boolean cabinLuggage, int maxLuggage) {
         this.name = name;

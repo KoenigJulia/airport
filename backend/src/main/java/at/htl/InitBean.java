@@ -10,11 +10,13 @@ import at.htl.workloads.location.Location;
 import at.htl.workloads.location.LocationRepository;
 import at.htl.workloads.luggage.Luggage;
 import at.htl.workloads.luggage.LuggageRepository;
+import at.htl.workloads.luggage.Size;
 import at.htl.workloads.person.Person;
 import at.htl.workloads.person.PersonRepository;
 import at.htl.workloads.pilot.Pilot;
 import at.htl.workloads.pilot.PilotRepository;
 import at.htl.workloads.seat.SeatRepository;
+import at.htl.workloads.ticket.Ticket;
 import at.htl.workloads.ticket.TicketRepository;
 import at.htl.workloads.travelclass.TravelClass;
 import at.htl.workloads.travelclass.TravelClassRepository;
@@ -72,8 +74,8 @@ public class InitBean {
 
         //travelclass
         TravelClass trC1 = new TravelClass("first", 150.00, false, false, true, 2);
-        TravelClass trC2 = new TravelClass("business", 230.00, false, true, true,3);
-        TravelClass trC3 = new TravelClass("economy", 300.00, true, true, true,5);
+        TravelClass trC2 = new TravelClass("business", 230.00, false, true, true, 3);
+        TravelClass trC3 = new TravelClass("economy", 300.00, true, true, true, 5);
         travelclassRepository.add(trC1);
         travelclassRepository.add(trC2);
         travelclassRepository.add(trC3);
@@ -120,22 +122,10 @@ public class InitBean {
         pilotRepository.add(pi3);
         pilotRepository.add(pi4);
 
-        // luggage
-//        Luggage lu1 = new Luggage(20.00, Size.Medium, "A223");
-//        Luggage lu2 = new Luggage(50.00, Size.Large, "Y384");
-//        Luggage lu3 = new Luggage(15.67, Size.Medium, "B485");
-//        Luggage lu4 = new Luggage(5.89, Size.Small, "U398");
-//        Luggage lu5 = new Luggage(2.55, Size.Small, "T485");
-//        luggageRepository.add(lu1);
-//        luggageRepository.add(lu2);
-//        luggageRepository.add(lu3);
-//        luggageRepository.add(lu4);
-//        luggageRepository.add(lu5);
-
         // airplane
-        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 4, 10000.00, 300.00, 8, 6);
-        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 4, 10500.00, 250.00, 10, 6);
-        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 6, 11000.00, 200.00, 12, 6);
+        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 4, 10000.00, 300.00, 8, 6, 100);
+        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 4, 10500.00, 250.00, 10, 6, 200);
+        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 6, 11000.00, 200.00, 12, 6, 500);
         airplaneRepository.add(ap1);
         airplaneRepository.add(ap2);
         airplaneRepository.add(ap3);
@@ -154,25 +144,21 @@ public class InitBean {
         flightRepository.add(fl4);
         flightRepository.add(fl5);
 
-        // seat
-//        Seat s1 = new Seat(1, "A", seatType);
-//        Seat s2 = new Seat(3, "A", seatType);
-//        Seat s3 = new Seat(20, "E", seatType);
-//        Seat s4 = new Seat(27, "H", seatType);
-//        Seat s5 = new Seat(16, "F", seatType);
-//        seatRepository.add(s1);
-//        seatRepository.add(s2);
-//        seatRepository.add(s3);
-//        seatRepository.add(s4);
-//        seatRepository.add(s5);
+        // ticket
 
-//
-//        // ticket
-//        //TODO(fields)
-//        //public Ticket(Flight flight, Person person, Double price, Integer seatNumber, String rowNumber, TravelClass travelclass, List<Luggage> luggage) {
-        List<Luggage> luggage = new ArrayList<>();
+        Luggage lu1 = new Luggage(20.00, Size.Medium, "A223");
+        Luggage lu2 = new Luggage(50.00, Size.Large, "Y384");
+        Luggage lu3 = new Luggage(15.67, Size.Medium, "B485");
+        Luggage lu4 = new Luggage(5.89, Size.Small, "U398");
+        Luggage lu5 = new Luggage(2.55, Size.Small, "T485");
+
+        Ticket t1 = fl1.bookFlight(p2, trC3, 1, List.of(lu1));
+        Ticket t2 = fl1.bookFlight(p3, trC2, 2, List.of(lu2, lu3));
+        ticketRepository.add(t1);
+        ticketRepository.add(t2);
 
         //TODO refactor tickets with new seat creation
+
 
 //        luggage.add(lu1);
 //        luggage.add(lu2);
@@ -184,8 +170,7 @@ public class InitBean {
 //        luggage.add(lu3);
 //        luggage.add(lu4);
 //        Ticket t2 = new Ticket(fl1, p3, 340.77, s5, trC3, luggage);
-//        Ticket t1 = new Ticket(fl1, p2, 330.88, s1, trC3, luggage);
-//        ticketRepository.add(t1);
+
 //        ticketRepository.add(t2);
 //        ticketRepository.add(t3);
 //        ticketRepository.add(t4);
