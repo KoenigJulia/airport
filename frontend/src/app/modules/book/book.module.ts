@@ -9,6 +9,8 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import {CoreModule} from "../../core/core.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatDatepickerModule,
     MatCardModule,
     MatButtonModule,
+    CoreModule,
+    ReactiveFormsModule,
   ]
 })
 export class BookModule { }

@@ -33,4 +33,8 @@ export class BackendApiService {
 
     return this.http.get<Person>(`${environment.backendUrl}/person/byEmail?email=${this.authenticationService.username.replace("@", "%40")}`, this.requestOptions);
   }
+
+  getFlightsInTime(startTime: string | null, endTime: string | null): Observable<Flight[]> {
+    return this.http.get<Flight[]>(`${environment.backendUrl}/flight/inRange?startTime=${startTime}&endTime=${endTime}`, this.requestOptions);
+  }
 }
