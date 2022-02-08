@@ -1,1 +1,12 @@
-<p>book-flight works!</p>
+<app-navbar></app-navbar>
+<div class="flex h-full">
+  <div class="flex-1 bg-green-400 h-full">
+      <div class="flex p-2 space-x-1 place-content-center" *ngFor="let r of [].constructor(flight?.airplane?.seatRows)">
+        <div class="p-2 bg-green-500 rounded hover:bg-gray-500 w-10 h-10 text-center" *ngFor="let c of [].constructor(flight?.airplane?.seatColumns)">{{1}}</div>
+      </div>
+  </div>
+  <div class="flex-1 bg-amber-300"></div>
+</div>
+
+
+

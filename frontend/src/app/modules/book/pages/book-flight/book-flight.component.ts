@@ -8,7 +8,8 @@ import {Flight} from "../../../../shared/models/flight.model";
   templateUrl: './book-flight.component.html',
 })
 export class BookFlightComponent implements OnInit {
-  flight: Flight | undefined;
+  flight: Flight | null = null;
+  numberOfSeats: number = 0;
 
   constructor(private route: ActivatedRoute, private backendApiService: BackendApiService) { }
 
@@ -16,6 +17,7 @@ export class BookFlightComponent implements OnInit {
     this.backendApiService.getFlightById(Number.parseInt(<string>this.route.snapshot.paramMap.get("id"))).subscribe(res => {
       this.flight = res;
     });
+    console.log(this);
   }
 
 }
