@@ -78,7 +78,13 @@ public class FlightRepository {
                 .getResultList();
     }
 
-    // summary flights with total luggage weight
+    public List<FlightLuggageWeight> getFlightsLuggageWeight(){
+        return this.em
+                .createQuery("select new at.htl.workloads.flight.FlightLuggageWeight(f.id, coalesce(sum(l.weight), 0.0)) from Flight f " +
+                        "left join f.tickets t " +
+                        "left join t.luggage l group by f, l", FlightLuggageWeight.class)
+                .getResultList();
+    }
 
     public Flight removeFlight(Long id){
         Flight flight = this.em.find(Flight.class,id);

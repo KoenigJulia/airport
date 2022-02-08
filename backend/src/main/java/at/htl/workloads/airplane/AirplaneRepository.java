@@ -30,6 +30,13 @@ public class AirplaneRepository {
                 .findFirst().orElse(null);
     }
 
+    public List<Airplane> getToFuel() {
+        return this.em
+                .createQuery("select a from Airplane a where (a.actualFuel / a.fuelCapacity) < :threshold", Airplane.class)
+                .setParameter("threshold", Airplane.FUEL_THRESHOLD)
+                .getResultList();
+    }
+
     public List<Airplane> getAll() {
         return this.em
                 .createQuery("select a from Airplane a", Airplane.class)

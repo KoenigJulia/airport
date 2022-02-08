@@ -7,6 +7,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Airplane {
+
+    public static final double FUEL_THRESHOLD = 0.6;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

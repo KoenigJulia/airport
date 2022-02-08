@@ -4,6 +4,9 @@ import at.htl.workloads.flight.Flight;
 import at.htl.workloads.flight.FlightRepository;
 
 import javax.annotation.security.RolesAllowed;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+import javax.json.bind.JsonbBuilder;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -39,6 +42,18 @@ public class FlightResource {
     public Response getAllTickets(@QueryParam("flightId") long flightId){
         var seats = this.flightRepository.getAllTickets(flightId);
         return Response.ok(seats).build();
+    }
+
+    @GET
+    @Path("flightsLuggageWeight")
+    public Response getFlightWithLuggageWeight(){
+        var flightLuggageWeights = this.flightRepository.getFlightsLuggageWeight();
+        var res = flightLuggageWeights.stream().map(flw -> Json.createObjectBuilder()
+                .add("flightId", flw.flightId())
+                .add("weight", flw.weight())
+                .build()
+        ).toList();
+        return Response.ok(res).build();
     }
 
     @GET
