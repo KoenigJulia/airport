@@ -37,4 +37,8 @@ export class BackendApiService {
   getFlightsInTime(startTime: string | null, endTime: string | null): Observable<Flight[]> {
     return this.http.get<Flight[]>(`${environment.backendUrl}/flight/inRange?startTime=${startTime}&endTime=${endTime}`, this.requestOptions);
   }
+
+  getFlightById(id: number): Observable<Flight> {
+    return this.http.get<Flight>(`${environment.backendUrl}/flight/${id}`, this.requestOptions);
+  }
 }
