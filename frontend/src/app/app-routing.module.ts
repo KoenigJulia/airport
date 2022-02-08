@@ -32,6 +32,10 @@ const routes: Routes = [
       {
         path: 'airplane',
         loadChildren: () => import('./modules/airplane/airplane.module').then(m => m.AirplaneModule)
+      },
+      {
+        path: 'ticket',
+        loadChildren: () => import('./modules/ticket/ticket.module').then(m => m.TicketModule)
       }
     ]
   },
