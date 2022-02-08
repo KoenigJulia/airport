@@ -26,7 +26,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -75,6 +74,7 @@ public class InitBean {
         if(!"test".equals(io.quarkus.runtime.configuration.ProfileManager.getActiveProfile())) {
             loadAirport();
         }
+        loadAirplanes();
     }
 
     void loadAirport(){
@@ -132,17 +132,12 @@ public class InitBean {
         pilotRepository.add(pi4);
 
         // airplane
-        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 4, 10000.00, 300.00, 8, 6, 100);
-        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 4, 10500.00, 250.00, 10, 6, 200);
-        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 6, 11000.00, 200.00, 12, 6, 500);
-        airplaneRepository.add(ap1);
-        airplaneRepository.add(ap2);
-        airplaneRepository.add(ap3);
+        loadAirplanes();
 
         // flight
         //TODO(fields)
         //public Flight(Location startDestination, Location endDestination, Double distance, Airplane airplane, LocalDateTime startTime, List<Employee> flightAttendants, List<Pilot> pilots) {
-        Flight fl1 = new Flight(l1, "G1", LocalDateTime.of(2022, Month.JANUARY, 20, 16, 30), l3, "G2", 209.00, ap1, LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
+        Flight fl1 = new Flight(l1, "G1", LocalDateTime.of(2022, Month.JANUARY, 20, 16, 30), l3, "G2", 209.00, airplaneRepository.getAirplane(1L), LocalDateTime.of(2022, Month.JANUARY, 20, 20, 30), List.of(e1, e2), pi1, pi2);
         Flight fl2 = new Flight(l2, "G3", LocalDateTime.of(2021, Month.DECEMBER, 24, 4, 15), l1, "G6", 201.00, ap2, LocalDateTime.of(2021, Month.DECEMBER, 24, 9, 15), List.of(e1, e3), pi2, pi4);
         Flight fl3 = new Flight(l3, "G1", LocalDateTime.of(2022, Month.FEBRUARY, 3, 12, 45), l1, "G3", 209.00, ap2, LocalDateTime.of(2022, Month.FEBRUARY, 3, 14, 45), List.of(e2, e3), pi3, pi1);
         Flight fl4 = new Flight(l2, "G2", LocalDateTime.of(2021, Month.JANUARY, 30, 2, 15), l1, "G1", 201.00, ap3, LocalDateTime.of(2021, Month.JANUARY, 30, 5, 15), List.of(e1, e3), pi2, pi3);
@@ -184,5 +179,23 @@ public class InitBean {
         ticketRepository.add(t6);
         //TODO refactor tickets with new seat creation
 
+    }
+
+    public void loadAirplanes(){
+        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 4, 10000.00, 300.00, 8, 6, 100);
+        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 4, 10500.00, 250.00, 10, 6, 200);
+        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 6, 11000.00, 200.00, 12, 6, 500);
+        airplaneRepository.add(ap1);
+        airplaneRepository.add(ap2);
+        airplaneRepository.add(ap3);
+    }
+
+    void loadTestData(){
+        Airplane ap1 = new Airplane("P01", 5000.00, 3000.00, 4, 10000.00, 300.00, 8, 6, 100);
+        Airplane ap2 = new Airplane("P02", 6000.00, 5000.00, 4, 10500.00, 250.00, 10, 6, 200);
+        Airplane ap3 = new Airplane("P03", 10000.00, 5000.00, 6, 11000.00, 200.00, 12, 6, 500);
+        airplaneRepository.add(ap1);
+        airplaneRepository.add(ap2);
+        airplaneRepository.add(ap3);
     }
 }
