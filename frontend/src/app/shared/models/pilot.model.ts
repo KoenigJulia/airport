@@ -6,6 +6,9 @@ export interface Pilot {
   lastName: string;
   phoneNumber: string;
   socialSecurityNumber: string;
+  employeeNumber:	string;
+  salary:	number;
+  isFlightAttendant: boolean;
   extraPayment: number;
   pilotNumber: string;
 }

@@ -28,8 +28,4 @@ export class PersonComponent implements OnInit {
       this.persons = p;
     })
   }
-
-  filter() {
-
-  }
 }

@@ -19,12 +19,7 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.backendApiService.getEmployees().subscribe(e => {
       this.employees = e;
-      console.log(e)
     })
-  }
-
-  filter() {
-
   }
 
 }
