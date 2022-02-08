@@ -72,6 +72,13 @@ public class InitBean {
     @Transactional
     void init(@Observes StartupEvent event) {
 
+        if(!"test".equals(io.quarkus.runtime.configuration.ProfileManager.getActiveProfile())) {
+            loadAirport();
+        }
+    }
+
+    void loadAirport(){
+
         //travelclass
         TravelClass trC1 = new TravelClass("first", 150.00, false, false, true, 2);
         TravelClass trC2 = new TravelClass("business", 230.00, false, true, true, 3);
@@ -163,12 +170,12 @@ public class InitBean {
         Luggage lu13 = new Luggage(8.00, Size.Large, "U405");
         Luggage lu14 = new Luggage(9.00, Size.Large, "U406");
         
-        Ticket t1 = fl1.bookFlight(p2, trC3, 1, List.of(lu1));
+        Ticket t1 = fl1.bookFlight(p2, trC3, 1, List.of(lu1, lu13, lu14));
         Ticket t2 = fl1.bookFlight(p3, trC2, 2, List.of(lu2, lu3));
-        Ticket t3 = fl2.bookFlight(p1, trC2, 3, List.of(lu1,lu2));
-        Ticket t4 = fl3.bookFlight(p4, trC1, 9, List.of(lu3,lu5));
-        Ticket t5 = fl5.bookFlight(p5, trC3, 7, List.of(lu1,lu2,lu3));
-        Ticket t6 = fl4.bookFlight(p6, trC1, 6, List.of(lu4));
+        Ticket t3 = fl2.bookFlight(p1, trC2, 3, List.of(lu4,lu5));
+        Ticket t4 = fl3.bookFlight(p4, trC1, 5, List.of(lu6,lu7));
+        Ticket t5 = fl5.bookFlight(p5, trC3, 4, List.of(lu8,lu9,lu10));
+        Ticket t6 = fl4.bookFlight(p6, trC1, 6, List.of(lu11,lu12));
         ticketRepository.add(t1);
         ticketRepository.add(t2);
         ticketRepository.add(t3);
@@ -176,24 +183,6 @@ public class InitBean {
         ticketRepository.add(t5);
         ticketRepository.add(t6);
         //TODO refactor tickets with new seat creation
-
-
-//        luggage.add(lu1);
-//        luggage.add(lu2);
-//        Ticket t6 = new Ticket(fl5, p4, 2993.83, s1, trC1, luggage);
-//        Ticket t3 = new Ticket(fl2, p5, 1500.40, s2, trC1, luggage);
-//        luggage.add(lu5);
-//        Ticket t4 = new Ticket(fl3, p3, 1020.80, s3, trC2, luggage);
-//        Ticket t5 = new Ticket(fl4, p6, 892.46, s4, trC2, luggage);
-//        luggage.add(lu3);
-//        luggage.add(lu4);
-//        Ticket t2 = new Ticket(fl1, p3, 340.77, s5, trC3, luggage);
-
-//        ticketRepository.add(t2);
-//        ticketRepository.add(t3);
-//        ticketRepository.add(t4);
-//        ticketRepository.add(t5);
-//        ticketRepository.add(t6);
 
     }
 }
