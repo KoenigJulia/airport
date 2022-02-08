@@ -11,11 +11,13 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {CoreModule} from "../../core/core.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {BookFlightComponent} from "./pages/book-flight/book-flight.component";
 
 
 @NgModule({
   declarations: [
-    BookComponent
+    BookComponent,
+    BookFlightComponent
   ],
   imports: [
     CommonModule,
