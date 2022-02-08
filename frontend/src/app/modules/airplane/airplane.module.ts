@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AirplaneRoutingModule } from './airplane-routing.module';
 import { AirplaneComponent } from './pages/airplane/airplane.component';
+import {MatTableModule} from "@angular/material/table";
+import {CoreModule} from "../../core/core.module";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { AirplaneComponent } from './pages/airplane/airplane.component';
   ],
   imports: [
     CommonModule,
-    AirplaneRoutingModule
+    AirplaneRoutingModule,
+    MatTableModule,
+    CoreModule
   ]
 })
 export class AirplaneModule { }

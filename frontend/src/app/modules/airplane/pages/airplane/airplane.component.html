@@ -1,1 +1,51 @@
-<p>airplane works!</p>
+<app-navbar></app-navbar>
+
+<table mat-table class="" [dataSource]="airplanes" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="airplaneNr">
+    <th mat-header-cell *matHeaderCellDef> Airplane Nr</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.airplaneNr}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actualFuel">
+    <th mat-header-cell *matHeaderCellDef> Actual Fuel</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.actualFuel}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="crewCnt">
+    <th mat-header-cell *matHeaderCellDef> Crew Cnt</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.crewCnt}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fuelCapacity">
+    <th mat-header-cell *matHeaderCellDef> Fuel Capacity</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.fuelCapacity}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="maxHeight">
+    <th mat-header-cell *matHeaderCellDef> Max Height</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.maxHeight}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="maxSpeed">
+    <th mat-header-cell *matHeaderCellDef> Max Speed</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.maxSpeed}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="seatColumns">
+    <th mat-header-cell *matHeaderCellDef> Seat Columns</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.seatColumns}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="seatRows">
+    <th mat-header-cell *matHeaderCellDef> Seat Rows</th>
+    <td mat-cell *matCellDef="let airplane"> {{airplane.seatRows}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
