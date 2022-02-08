@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { TicketRoutingModule } from './ticket-routing.module';
 import { TicketComponent } from './pages/ticket/ticket.component';
+import {MatTableModule} from "@angular/material/table";
+import {CoreModule} from "../../core/core.module";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { TicketComponent } from './pages/ticket/ticket.component';
   ],
   imports: [
     CommonModule,
-    TicketRoutingModule
+    TicketRoutingModule,
+    MatTableModule,
+    CoreModule
   ]
 })
 export class TicketModule { }
