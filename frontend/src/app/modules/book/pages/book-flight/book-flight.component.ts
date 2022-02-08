@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {BackendApiService} from "../../../../core/services/backend-api.service";
 import {Flight} from "../../../../shared/models/flight.model";
+import {Seat} from "../../../../shared/models/seat.model";
 
 @Component({
   selector: 'app-book-flight',
@@ -9,6 +10,8 @@ import {Flight} from "../../../../shared/models/flight.model";
 })
 export class BookFlightComponent implements OnInit {
   flight: Flight | null = null;
+  availableSeats: Seat[] = [];
+  selectedSeat = "";
 
   constructor(private route: ActivatedRoute, private backendApiService: BackendApiService) { }
 
@@ -17,9 +20,13 @@ export class BookFlightComponent implements OnInit {
       this.flight = res;
 
       this.backendApiService.getBookedSeats(this.flight.id).subscribe(res => {
-        console.log(res);
+        this.availableSeats = res;
       });
     });
+  }
+
+  selectSeat(id: string): void {
+    this.selectedSeat = id;
   }
 
 }
