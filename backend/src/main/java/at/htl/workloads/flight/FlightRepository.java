@@ -82,7 +82,7 @@ public class FlightRepository {
         return this.em
                 .createQuery("select new at.htl.workloads.flight.FlightLuggageWeight(f.id, coalesce(sum(l.weight), 0.0)) from Flight f " +
                         "left join f.tickets t " +
-                        "left join t.luggage l group by f, l", FlightLuggageWeight.class)
+                        "left join t.luggage l group by f.id order by f.id", FlightLuggageWeight.class)
                 .getResultList();
     }
 
