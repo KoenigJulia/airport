@@ -30,6 +30,13 @@ public class AirplaneResource {
     }
 
     @GET
+    @Path("toFuel")
+    public Response getAllAirplanesToFuel() {
+        var airplanes = this.airplaneRepository.getToFuel();
+        return Response.ok(airplanes).build();
+    }
+
+    @GET
     @Path("{id}")
     public Response get(@PathParam("id") Long id) {
         Airplane airplane = this.airplaneRepository.getAirplane(id);
