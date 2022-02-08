@@ -17,7 +17,7 @@
   <button mat-stroked-button (click)="filter()">Filter</button>
 
   <h2>Flights</h2>
-  <mat-card [routerLink]="'/book/' + (i + 1)" class="hover:bg-indigo-50 cursor-pointer" *ngFor="let flight of flights; let i = index">
+  <mat-card [routerLink]="'/book/' + flight.id" class="hover:bg-indigo-50 cursor-pointer" *ngFor="let flight of flights">
     <div class="flex">
       <div class="flex-auto w-1/2 p-2">
         <h2>Departure</h2>
