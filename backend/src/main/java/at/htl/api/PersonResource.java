@@ -38,6 +38,15 @@ public class PersonResource {
                 : Response.ok(person))
                 .build();
     }
+    @GET
+    @Path("byEmail")
+    public Response get(@QueryParam("email") String email) {
+        Person person = this.personRepository.getPerson(email);
+        return (person == null
+                ? Response.status(404)
+                : Response.ok(person))
+                .build();
+    }
 
     @PUT
     @Transactional

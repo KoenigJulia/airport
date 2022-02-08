@@ -30,6 +30,15 @@ public class PersonRepository {
                 .findFirst().orElse(null);
     }
 
+    public Person getPerson(String email) {
+        var query = this.em
+                .createQuery("select p from Person p where p.email = :email", Person.class)
+                .setParameter("email", email);
+
+        return query.getResultList().stream()
+                .findFirst().orElse(null);
+    }
+
     public List<Person> getAll() {
         return this.em
                 .createQuery("select p from Person p", Person.class)

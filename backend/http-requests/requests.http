@@ -1,2 +1,9 @@
 GET localhost:8080/api/flight/1
 Authorization: Basic john.doe@gmail.com pw
+
+###
+
+GET localhost:8080/api/person/byEmail?email=admin%40gmail.com
+Authorization: Basic admin@gmail.com admin
+
+###
