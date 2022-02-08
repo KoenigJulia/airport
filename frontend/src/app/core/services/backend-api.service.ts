@@ -6,6 +6,7 @@ import {environment} from "../../../environments/environment";
 import {Person} from "../../shared/models/person.model";
 import {AuthenticationService} from "../authentication/authentication.service";
 import {Seat} from "../../shared/models/seat.model";
+import {Employee} from "../../shared/models/employee.model";
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,10 @@ export class BackendApiService {
 
   getPersons(): Observable<Person[]> {
     return this.http.get<Person[]>(`${environment.backendUrl}/person/all`, this.requestOptions);
+  }
+
+  getEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${environment.backendUrl}/employee/all`, this.requestOptions);
   }
 
   getBookedSeats(id: number): Observable<Seat[]> {
