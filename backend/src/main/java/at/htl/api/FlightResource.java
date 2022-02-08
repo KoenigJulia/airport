@@ -13,6 +13,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -22,8 +23,6 @@ import java.time.format.DateTimeFormatter;
 @RolesAllowed({"user", "admin"})
 public class FlightResource {
     private final FlightRepository flightRepository;
-    
-     DateTimeFormatter dateTimeFormatter= DateTimeFormatter.ofPattern("M/d/yy, h:mm a");
 
     public FlightResource(FlightRepository flightRepository) {
         this.flightRepository = flightRepository;
@@ -80,9 +79,9 @@ public class FlightResource {
     @GET
     @Path("inRange")
     public Response getAllFlights(@QueryParam("startTime") String startTime, @QueryParam("endTime") String endTime) {
-        LocalDateTime start = LocalDateTime.parse(startTime, dateTimeFormatter);
-        LocalDateTime end = LocalDateTime.parse(endTime, dateTimeFormatter);
-        var allFlights = this.flightRepository.getAllInRange(start, end);
+        LocalDate start = LocalDate.parse(startTime);
+        LocalDate end = LocalDate.parse(endTime);
+        var allFlights = this.flightRepository.getAllInRange(start.atStartOfDay(), end.atStartOfDay());
         return Response.ok(allFlights).build();
     }
 
