@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {Person} from "../../shared/models/person.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  username = new BehaviorSubject<string>("");
-  roles = new BehaviorSubject<string[]>([]);
+  username = ""
+  password = ""
+
+  person : Person | undefined
 
   constructor() { }
 }
