@@ -156,9 +156,16 @@ public class InitBean {
 
         Ticket t1 = fl1.bookFlight(p2, trC3, 1, List.of(lu1));
         Ticket t2 = fl1.bookFlight(p3, trC2, 2, List.of(lu2, lu3));
+        Ticket t3 = fl2.bookFlight(p1, trC2, 3, List.of(lu1,lu2));
+        Ticket t4 = fl3.bookFlight(p4, trC1, 9, List.of(lu3,lu5));
+        Ticket t5 = fl5.bookFlight(p5, trC3, 7, List.of(lu1,lu2,lu3));
+        Ticket t6 = fl4.bookFlight(p6, trC1, 6, List.of(lu4));
         ticketRepository.add(t1);
         ticketRepository.add(t2);
-
+        ticketRepository.add(t3);
+        ticketRepository.add(t4);
+        ticketRepository.add(t5);
+        ticketRepository.add(t6);
         //TODO refactor tickets with new seat creation
 
 
