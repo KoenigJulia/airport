@@ -9,15 +9,17 @@ import {Flight} from "../../../../shared/models/flight.model";
 })
 export class BookFlightComponent implements OnInit {
   flight: Flight | null = null;
-  numberOfSeats: number = 0;
 
   constructor(private route: ActivatedRoute, private backendApiService: BackendApiService) { }
 
   ngOnInit(): void {
     this.backendApiService.getFlightById(Number.parseInt(<string>this.route.snapshot.paramMap.get("id"))).subscribe(res => {
       this.flight = res;
+
+      this.backendApiService.getBookedSeats(this.flight.id).subscribe(res => {
+        console.log(res);
+      });
     });
-    console.log(this);
   }
 
 }
