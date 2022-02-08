@@ -41,7 +41,7 @@ public class PersonRepository {
 
     public List<Person> getAll() {
         return this.em
-                .createQuery("select p from Person p", Person.class)
+                .createQuery("select p from Person p order by p.id", Person.class)
                 .getResultList();
     }
 
