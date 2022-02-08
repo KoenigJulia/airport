@@ -153,7 +153,16 @@ public class InitBean {
         Luggage lu3 = new Luggage(15.67, Size.Medium, "B485");
         Luggage lu4 = new Luggage(5.89, Size.Small, "U398");
         Luggage lu5 = new Luggage(2.55, Size.Small, "T485");
-
+        Luggage lu6 = new Luggage(1.00, Size.Small, "U398");
+        Luggage lu7 = new Luggage(2.00, Size.Large, "U399");
+        Luggage lu8 = new Luggage(3.00, Size.Medium, "U400");
+        Luggage lu9 = new Luggage(4.00, Size.Large, "U401");
+        Luggage lu10 = new Luggage(5.00, Size.Large, "U402");
+        Luggage lu11 = new Luggage(6.00, Size.Large, "U403");
+        Luggage lu12 = new Luggage(7.00, Size.Large, "U404");
+        Luggage lu13 = new Luggage(8.00, Size.Large, "U405");
+        Luggage lu14 = new Luggage(9.00, Size.Large, "U406");
+        
         Ticket t1 = fl1.bookFlight(p2, trC3, 1, List.of(lu1));
         Ticket t2 = fl1.bookFlight(p3, trC2, 2, List.of(lu2, lu3));
         Ticket t3 = fl2.bookFlight(p1, trC2, 3, List.of(lu1,lu2));
