@@ -41,4 +41,8 @@ export class BackendApiService {
   getFlightById(id: number): Observable<Flight> {
     return this.http.get<Flight>(`${environment.backendUrl}/flight/${id}`, this.requestOptions);
   }
+
+  getPersons(): Observable<Person[]> {
+    return this.http.get<Person[]>(`${environment.backendUrl}/person/all`, this.requestOptions);
+  }
 }

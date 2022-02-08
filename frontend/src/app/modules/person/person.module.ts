@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { PersonRoutingModule } from './person-routing.module';
 import { PersonComponent } from './pages/person/person.component';
+import {CoreModule} from "../../core/core.module";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { PersonComponent } from './pages/person/person.component';
   ],
   imports: [
     CommonModule,
-    PersonRoutingModule
+    PersonRoutingModule,
+    CoreModule,
+    MatTableModule
   ]
 })
 export class PersonModule { }
