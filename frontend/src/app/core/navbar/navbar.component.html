@@ -19,8 +19,8 @@
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
-            <a href="" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
-            <a href="/book" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Book</a>
+            <div [routerLink]="'/home'" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer" aria-current="page">Home</div>
+            <div [routerLink]="'/book'" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer">Book</div>
           </div>
         </div>
       </div>
@@ -28,8 +28,8 @@
         <div class="ml-3 relative">
           <div>
             <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-              <a *ngIf="this.authenticationService.username.getValue() != ''" class="text-white text-sm font-medium">{{this.authenticationService.username.getValue()}}</a>
-              <a *ngIf="this.authenticationService.username.getValue() == ''" href="/login" class="text-white text-sm font-medium">Login</a>
+              <div *ngIf="this.authenticationService.username != ''" class="text-white text-sm font-medium">{{this.authenticationService.username}}</div>
+              <div *ngIf="this.authenticationService.username == ''" [routerLink]="'/login'" class="text-white text-sm font-medium cursor-pointer">Login</div>
             </button>
           </div>
         </div>
