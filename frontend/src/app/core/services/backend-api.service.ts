@@ -5,6 +5,7 @@ import {Flight} from "../../shared/models/flight.model";
 import {environment} from "../../../environments/environment";
 import {Person} from "../../shared/models/person.model";
 import {AuthenticationService} from "../authentication/authentication.service";
+import {Seat} from "../../shared/models/seat.model";
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,9 @@ export class BackendApiService {
 
   getPersons(): Observable<Person[]> {
     return this.http.get<Person[]>(`${environment.backendUrl}/person/all`, this.requestOptions);
+  }
+
+  getBookedSeats(id: number): Observable<Seat[]> {
+    return this.http.get<Seat[]>(`${environment.backendUrl}/flight/bookedSeats/${id}?flightId=${id}`, this.requestOptions);
   }
 }
