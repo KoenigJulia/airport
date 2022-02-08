@@ -27,4 +27,28 @@ public class Employee extends Person {
     public Employee() {
         super();
     }
+
+    public String getEmployeeNumber() {
+        return employeeNumber;
+    }
+
+    public void setEmployeeNumber(String employeeNumber) {
+        this.employeeNumber = employeeNumber;
+    }
+
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
+
+    public boolean isFlightAttendant() {
+        return isFlightAttendant;
+    }
+
+    public void setFlightAttendant(boolean flightAttendant) {
+        isFlightAttendant = flightAttendant;
+    }
 }
