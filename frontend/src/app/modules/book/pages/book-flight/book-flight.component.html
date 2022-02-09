@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 <div class="flex h-full">
-  <div class="flex-1 bg-green-400 h-full">
+  <div class="flex-1 h-full">
     <h1 class="text-center p-4">Available Tickets</h1>
       <div class="flex p-2 space-x-1 place-content-center" *ngFor="let seat of availableSeats">
         <button *ngIf="selectedSeat != seat.seatId.seatNumber" (click)="selectSeat(seat.seatId.seatNumber)" class="p-2 bg-green-500 rounded cursor-pointer hover:bg-gray-500 w-10 h-10 text-center">{{seat.seatId.seatNumber}}</button>
         <button *ngIf="selectedSeat == seat.seatId.seatNumber" (click)="selectSeat(seat.seatId.seatNumber)" class="p-2 bg-gray-500 rounded cursor-pointer w-10 h-10 text-center">{{seat.seatId.seatNumber}}</button>
       </div>
   </div>
-  <div class="flex-1 bg-amber-300">
+  <div class="flex-1">
   </div>
 </div>
 
