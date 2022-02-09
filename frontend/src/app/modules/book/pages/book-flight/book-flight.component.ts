@@ -19,7 +19,7 @@ export class BookFlightComponent implements OnInit {
     this.backendApiService.getFlightById(Number.parseInt(<string>this.route.snapshot.paramMap.get("id"))).subscribe(res => {
       this.flight = res;
 
-      this.backendApiService.getBookedSeats(this.flight.id).subscribe(res => {
+      this.backendApiService.getAvailableSeats(this.flight.id).subscribe(res => {
         this.availableSeats = res;
       });
     });

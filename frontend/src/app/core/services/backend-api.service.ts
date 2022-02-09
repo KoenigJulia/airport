@@ -68,7 +68,7 @@ export class BackendApiService {
   }
 
 
-  getBookedSeats(id: number): Observable<Seat[]> {
-    return this.http.get<Seat[]>(`${environment.backendUrl}/flight/bookedSeats/${id}?flightId=${id}`, this.requestOptions);
+  getAvailableSeats(id: number): Observable<Seat[]> {
+    return this.http.get<Seat[]>(`${environment.backendUrl}/flight/availableSeats/${id}?flightId=${id}`, this.requestOptions);
   }
 }
